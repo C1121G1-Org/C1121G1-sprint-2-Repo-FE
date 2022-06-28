@@ -4,7 +4,7 @@ import {Observable, Subject} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class SharedService {
+export class ShareService {
 
   constructor() { }
 
