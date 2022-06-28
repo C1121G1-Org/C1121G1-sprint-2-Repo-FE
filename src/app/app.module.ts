@@ -28,6 +28,7 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ChatboxModule,
