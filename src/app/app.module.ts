@@ -17,6 +17,7 @@ import {GuestFriendModule} from "./component/guest-friend/guest-friend.module";
 import {HomepageModule} from "./component/homepage/homepage.module";
 import {PostModule} from "./component/post/post.module";
 import {ReportModule} from "./component/report/report.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ReportModule} from "./component/report/report.module";
     FooterComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ChatboxModule,
