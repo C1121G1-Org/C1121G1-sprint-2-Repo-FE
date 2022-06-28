@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GuestModule} from './component/guest/guest.module';
@@ -28,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ChatboxModule,
