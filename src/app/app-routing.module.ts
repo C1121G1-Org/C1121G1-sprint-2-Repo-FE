@@ -5,8 +5,6 @@ import {GuestCreateComponent} from './component/guest/guest-create/guest-create.
 import {GuestSurveyComponent} from './component/guest/guest-survey/guest-survey.component';
 import {LoginComponent} from './component/security/login/login.component';
 
-
-
 const routes: Routes = [
   {path: '', component: SearchByNameComponent},
   {path: 'login', component: LoginComponent},
