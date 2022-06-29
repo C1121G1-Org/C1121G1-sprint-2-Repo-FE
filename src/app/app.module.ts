@@ -20,29 +20,32 @@ import {ReportModule} from "./component/report/report.module";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-  ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    ChatboxModule,
-    CommentModule,
-    FriendModule,
-    GuestModule,
-    GuestFriendModule,
-    HomepageModule,
-    PostModule,
-    ProfileModule,
-    ReportModule,
-    SecurityModule,
-    SharedModule,
-    WalletModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+    ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        ChatboxModule,
+        CommentModule,
+        FriendModule,
+        GuestModule,
+        GuestFriendModule,
+        HomepageModule,
+        PostModule,
+        ProfileModule,
+        ReportModule,
+        SecurityModule,
+        SharedModule,
+        WalletModule
+    ],
+    providers: [],
+    exports: [
+        HeaderComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
