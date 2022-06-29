@@ -1,1 +1,69 @@
-<p>guest-top100 works!</p>
+<div class="container" style="padding-top: 200px">
+  <h1 style="text-align: center; font-weight: bold; font-size: larger;"><i class="fa-solid fa-trophy-star"></i>Bảng xếp hạng Top 100 Idol <i class="fa-solid fa-trophy-star"></i> </h1>
+  <table class="content-table">
+    <thead>
+    <tr>
+      <th>
+        Hạng
+      </th>
+      <th>
+        Thành Viên
+      </th>
+      <th>
+        Danh Hiệu
+      </th>
+      <th>
+        Vip
+      </th>
+      <th>
+        Tài Sản
+      </th>
+      <th>
+        Lượt Yêu Thích
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of guest100 ; let i = index">
+      <td>
+          {{i+1}}
+      </td>
+      <td class="information">
+            <span>
+              <img src="https://pdp.edu.vn/wp-content/uploads/2021/01/hinh-anh-cute-de-thuong.jpg" alt="">
+              <span>{{item.name}}</span>
+            </span>
+      </td>
+      <td>
+            <div *ngIf="item.totalLike <1000">Dân thường</div>
+            <div *ngIf="item.totalLike >= 1000 ">Dân Chơi mới nổi</div>
+            <div *ngIf="item.totalLike >= 10000">Người nổi tiếng</div>
+      </td>
+      <td>
+        <div *ngIf="item.value == 0">No Vip</div>
+        <div *ngIf="item.value > 0 && item.value < 2000">Vip 1</div>
+        <div *ngIf="item.value >= 2000 && item.value < 5000">Vip 2</div>
+        <div *ngIf="item.value >= 5000 && item.value < 10000">Vip 3</div>
+        <div *ngIf="item.value >= 10000">Vip 4</div>
+      </td>
+      <td>
+        {{item.value}}
+      </td>
+      <td>
+        {{item.totalLike}} ♥
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example" class="pageable">
+    <ul class="pagination justify-content-end">
+      <li class="page-item ">
+        <a class="page-link" (click)="previousPage()" >Trước</a>
+      </li>
+      <li class="page-item"><a class="page-link">{{indexPagination+1}}</a></li>
+      <li class="page-item">
+        <a class="page-link" (click)="nextPage()">Sau</a>
+      </li>
+    </ul>
+  </nav>
+</div>
