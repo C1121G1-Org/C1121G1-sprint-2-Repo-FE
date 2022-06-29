@@ -34,7 +34,7 @@
       </div>
       <div class="social-icons col-4 p-1 ms-3">
 
-        <div style="font-weight: bold" *ngIf="!guestFriend">
+        <div style="font-weight: bold" *ngIf="!(guestFriend) && (guest.id !== friend.id)">
           <a class="social-icon my-1" (click)="addFriend()"><i class="fa-solid fa-user-plus"></i></a> KẾT BẠN
         </div>
         <!--        <div style="font-weight: bold" *ngIf="guestFriend">-->
@@ -149,7 +149,7 @@
         <div class="icon-box">
           <i class="material-icons">&#xE5CD;</i>
         </div>
-        <button #errorModalCloseBtn type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button (click)="reload()" #errorModalCloseBtn type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body text-center">
         <h4 class="text-danger">Không tìm thấy !</h4>
@@ -173,7 +173,7 @@
         <div class="icon-box">
           <i class="material-icons">&#xE5CD;</i>
         </div>
-        <button #errorCloseBtn type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button (click)="reload()" #errorCloseBtn type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body text-center">
         <h4 class="text-danger">Hệ thống đang bận !</h4>
