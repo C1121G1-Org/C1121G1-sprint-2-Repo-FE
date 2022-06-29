@@ -17,6 +17,10 @@ import {GuestFriendModule} from "./component/guest-friend/guest-friend.module";
 import {HomepageModule} from "./component/homepage/homepage.module";
 import {PostModule} from "./component/post/post.module";
 import {ReportModule} from "./component/report/report.module";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireStorage, AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 
 @NgModule({
   declarations: [
@@ -38,7 +42,10 @@ import {ReportModule} from "./component/report/report.module";
     ReportModule,
     SecurityModule,
     SharedModule,
-    WalletModule
+    WalletModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
