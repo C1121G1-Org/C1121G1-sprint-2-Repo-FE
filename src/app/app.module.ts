@@ -1,3 +1,4 @@
+
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
@@ -19,6 +20,7 @@ import {ReportModule} from './component/report/report.module';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import {HttpClientModule} from '@angular/common/http';
     SecurityModule,
     SharedModule,
     WalletModule,
+
     AngularFireModule.initializeApp(environment.firebaseConfig),
+
     HttpClientModule
   ],
   providers: [],

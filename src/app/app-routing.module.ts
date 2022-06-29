@@ -4,6 +4,7 @@ import {SearchByNameComponent} from './component/homepage/search-by-name/search-
 import {GuestCreateComponent} from './component/guest/guest-create/guest-create.component';
 import {GuestSurveyComponent} from './component/guest/guest-survey/guest-survey.component';
 import {LoginComponent} from './component/security/login/login.component';
+import {ProfileModule} from "./component/profile/profile.module";
 
 const routes: Routes = [
   {path: '', component: SearchByNameComponent},
@@ -13,7 +14,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+  ProfileModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
