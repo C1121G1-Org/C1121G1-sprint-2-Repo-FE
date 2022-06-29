@@ -8,13 +8,15 @@ import { GuestTop100Component } from './guest-top100/guest-top100.component';
 import { GuestSearchComponent } from './guest-search/guest-search.component';
 import { GuestListComponent } from './guest-list/guest-list.component';
 import { GuestWarningComponent } from './guest-warning/guest-warning.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [GuestCreateComponent, GuestSurveyComponent, GuestTop100Component, GuestSearchComponent, GuestListComponent, GuestWarningComponent],
-  imports: [
-    CommonModule,
-    GuestRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        GuestRoutingModule,
+        ReactiveFormsModule
+    ]
 })
 export class GuestModule { }
