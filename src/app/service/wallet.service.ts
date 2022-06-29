@@ -12,7 +12,13 @@ export class WalletService {
 
   constructor(private httpClient: HttpClient) {
   }
-
+  /*
+         Created by SonDCM
+         Role: GUEST
+         Time: 15:20 19/06/2022
+         Function: chargeMoney() = chargeMoney
+         Class:
+ */
   chargeMoney (chargeMoneyDto : ChargeMoneyDto) : Observable<any> {
     return this.httpClient.patch(this.URL+'wallet/updateWallet',chargeMoneyDto );
   }
