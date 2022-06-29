@@ -19,10 +19,6 @@ Fixed Navigation
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!--      <form class="d-flex">-->
-      <!--        <input style="border-radius: 20px" class="form-control me-2" type="search" placeholder="Tìm kiếm tình yêu" aria-label="Search">-->
-      <!--      </form>-->
-
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="navbar-nav ml-auto text-center">
           <li class="nav-item dropdown active">
@@ -48,23 +44,9 @@ Fixed Navigation
           <li class="nav-item ">
             <a class="nav-link" routerLink="/searchList">Tìm kiếm bạn bè</a>
           </li>
-          <!--                    <li class="nav-item dropdown">-->
-          <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
-          <!--                           data-toggle="dropdown"-->
-          <!--                           aria-haspopup="true" aria-expanded="false">-->
-          <!--                            Pages-->
-          <!--                        </a>-->
-          <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-          <!--                            <a class="dropdown-item" href="404.html">404 Page</a>-->
-          <!--                            <a class="dropdown-item" href="blog.html">Blog Page</a>-->
-          <!--                            <a class="dropdown-item" href="single-post.html">Blog Single Page</a>-->
-          <!--                        </div>-->
-          <!--                    </li>-->
 
-<!--            <li  class="header-item-login" data-duration-in=".3" data-animation-in="fadeInDown"-->
-<!--                data-delay-in=".8"-->
-<!--                class="btn btn-main"><a [routerLink]="['/login']">Đăng nhập</a></li>-->
-          <button [hidden]="isLoggedIn" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8" class="btn btn-main"
+          <button [hidden]="isLoggedIn" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8"
+                  class="btn btn-main"
                   [routerLink]="['/login']">Đăng nhập
           </button>
 
@@ -84,31 +66,7 @@ Fixed Navigation
               <a class="dropdown-item" (click)="logOut()" style="color: white;">Đăng Xuất </a>
             </div>
           </li>
-
-          <!--          <li [hidden]="!isLoggedIn">-->
-          <!--            <div class="header-item header-item-menu">-->
-          <!--              <div class="header-icon">-->
-          <!--                <img src="{{imageLink}}"-->
-          <!--                     alt="" style="border-radius: 50%;width: 40px; height: 40px; object-fit: cover">-->
-          <!--              </div>-->
-<!--                        <div class="header-text">-->
-<!--                          {{username}} <i class="fa-solid fa-angle-down"></i>-->
-<!--                        </div>-->
-          <!--            </div>-->
-          <!--            <div class="sub-menu">-->
-          <!--              <ul>-->
-          <!--                <li><a [routerLink]="['/personal-information']">Thông tin cá nhân</a></li>-->
-          <!--                <li><a [routerLink]="['/change-personal-password']">Bảo mật</a></li>-->
-          <!--                <li><a (click)="logOut()" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8"-->
-          <!--                       class="btn btn-main">Đăng xuất</a></li>-->
-          <!--              </ul>-->
-          <!--            </div>-->
-          <!--          </li>-->
         </ul>
-
-<!--        <button data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8" class="btn btn-main"-->
-<!--                [routerLink]="['/login']">Đăng nhập-->
-<!--        </button>-->
       </div>
     </nav>
     <!-- /main nav -->
