@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
+import {Component, OnInit} from "@angular/core";
 import {ChargeMoneyDto} from "../../../dto/ChargeMoneyDto";
 import {WalletService} from "../../../service/wallet.service";
+import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
 
 
 @Component({
