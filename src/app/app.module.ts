@@ -17,6 +17,10 @@ import {GuestFriendModule} from "./component/guest-friend/guest-friend.module";
 import {HomepageModule} from "./component/homepage/homepage.module";
 import {PostModule} from "./component/post/post.module";
 import {ReportModule} from "./component/report/report.module";
+import {HttpClientModule} from "@angular/common/http";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import {ReportModule} from "./component/report/report.module";
     ReportModule,
     SecurityModule,
     SharedModule,
-    WalletModule
+    WalletModule,
+    HttpClientModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
