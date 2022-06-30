@@ -66,4 +66,5 @@ export class GuestFriendService {
   removeSuggestion(id: number): Observable<void> {
     return this.http.get<void>(this.guestFriendApi + 'remove-friend-suggestion/' + id);
   }
+
 }
