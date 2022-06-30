@@ -4,6 +4,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Friend} from "../model/friend";
 import {Guest} from "../model/guest";
 import {GuestFriend} from "../model/guest-friend";
+import {Post} from "../model/post";
 
 @Component({
   selector: 'app-friend-profile',
@@ -24,6 +25,7 @@ export class FriendProfileComponent implements OnInit {
   guest: Guest = {id: 2};
   friend: Friend = {};
   guestFriend: GuestFriend;
+  posts: Post[] = [];
 
   constructor(private guestFriendService: GuestFriendService, private activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -34,12 +36,18 @@ export class FriendProfileComponent implements OnInit {
       let id = +param.get('id');
       this.guestFriendService.getFriend(id).subscribe(data => {
         this.friend = data;
-        this.guestFriendService.getGuest(this.guest.id).subscribe(data => {
-          this.guest = data;
-          this.guestFriendService.findGuestFriendByGuestIdAndFriendId(this.guest.id, this.friend.id).subscribe(data => {
-            this.guestFriend = data;
+        this.guestFriendService.findAllGuestPost(this.friend.id).subscribe(data => {
+          this.posts = data;
+          this.guestFriendService.getGuest(this.guest.id).subscribe(data => {
+            this.guest = data;
+            this.guestFriendService.findGuestFriendByGuestIdAndFriendId(this.guest.id, this.friend.id).subscribe(data => {
+              this.guestFriend = data;
+            })
           })
-        })
+        }, err => {
+          console.log(err);
+        });
+
       }, err => {
         this.openErrModal.nativeElement.click();
       })

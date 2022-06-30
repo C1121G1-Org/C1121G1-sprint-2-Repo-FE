@@ -1,7 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {GuestFriendService} from "../../../service/guest-friend.service";
 import {Guest} from "../model/guest";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {TokenStorageService} from "../../../service/security/token-storage.service";
+import {Post} from "../model/post";
 
 @Component({
   selector: 'app-personal-profile',
@@ -9,11 +11,18 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
   styleUrls: ['./personal-profile.component.css']
 })
 export class PersonalProfileComponent implements OnInit {
+
   @ViewChild("errorModalBtn") openErrModal: ElementRef;
   @ViewChild("errorModalCloseBtn") closeErrModal: ElementRef;
-  guest: Guest = {};
 
-  constructor(private guestFriendService: GuestFriendService, private activatedRoute: ActivatedRoute,private router:Router) {
+  guest: Guest = {};
+  posts: Post[] = [];
+
+  constructor(private guestFriendService: GuestFriendService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private tokenStorageService: TokenStorageService) {
+
   }
 
   ngOnInit(): void {
@@ -21,6 +30,9 @@ export class PersonalProfileComponent implements OnInit {
       let id = +param.get('id');
       this.guestFriendService.getGuest(id).subscribe(data => {
         this.guest = data;
+        this.guestFriendService.findAllGuestPost(this.guest.id).subscribe(data => {
+          this.posts = data;
+        })
       }, err => {
         this.openErrModal.nativeElement.click();
       })
@@ -31,4 +43,5 @@ export class PersonalProfileComponent implements OnInit {
     this.closeErrModal.nativeElement.click();
     this.router.navigate(['/']);
   }
+
 }
