@@ -1,11 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TokenStorageService} from "../../service/security/token-storage.service";
 import {ShareService} from "../../service/security/share.service";
 import {Router} from "@angular/router";
-import {GuestFriend} from "../../models/guest-friend";
+
 import {GuestFriendService} from "../../service/guest-friend.service";
 import {Guest} from "../../component/profile/model/guest";
 import {Friend} from "../../component/profile/model/friend";
+import {GuestFriend} from "../../component/profile/model/guest-friend";
+import {GuestDto} from "../../dto/guest-dto";
 
 @Component({
   selector: 'app-header',
@@ -28,16 +30,19 @@ export class HeaderComponent implements OnInit {
   friend: Friend = {};
   guestFriend: GuestFriend;
 
+  checkGuestFriend = false ;
+
   /*
      Created by TuanPA
      Date: 09:30 26/06/2022
    */
+
   username: string;
   imageLink: string;
   idPatient: number;
   currentUser: string;
   role: string;
-  isLoggedIn = false;
+  isLoggedIn = true;
 
   /*
      Created by TuanPA
@@ -62,6 +67,7 @@ export class HeaderComponent implements OnInit {
     this.getFriendSuggestions(1);
 
     this.loadHeader();
+
   }
 
 
@@ -88,6 +94,7 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = !this.isLoggedIn;
     this.router.navigate(['/']);
   }
+
 
   /*
       Created by ChienLV
@@ -186,11 +193,10 @@ export class HeaderComponent implements OnInit {
           }
           this.guestFriendService.addFriend(this.guestFriend).subscribe(()=>{
             alert('ok');
+            this.removeSuggestion(this.guest.id);
           })
         })
       })
     }
   }
-
-
 }

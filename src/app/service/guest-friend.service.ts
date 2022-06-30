@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {GuestFriend} from "../component/profile/model/guest-friend";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuestFriendService {
+
   /*
    Created by ChienLV
    Date: 15:00 29/06/2022
@@ -47,6 +48,15 @@ export class GuestFriendService {
     return this.http.delete(`${this.URL}/profile/delete-friend/${id}`);
   }
 
+
+  findGuestByUsername(username: string): Observable<any> {
+    return this.http.get(`${this.URL}/profile/get-guest-by-username/${username}`)
+  }
+
+  findAllGuestPost(id: number): Observable<any> {
+    return this.http.get(`${this.URL}/profile/guest-post/${id}`);
+  }
+
   getFriendRequests(id: number): Observable<any> {
     return this.http.get<any>(this.guestFriendApi + 'list-friend-requests/' + id);
   }
@@ -65,6 +75,7 @@ export class GuestFriendService {
 
   removeSuggestion(id: number): Observable<void> {
     return this.http.get<void>(this.guestFriendApi + 'remove-friend-suggestion/' + id);
+
   }
 
 }
