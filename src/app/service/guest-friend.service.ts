@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {GuestFriend} from "../component/profile/model/guest-friend";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuestFriendService {
+
   URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) {
@@ -34,5 +35,13 @@ export class GuestFriendService {
 
   deleteFriend(id: number): Observable<any> {
     return this.http.delete(`${this.URL}/profile/delete-friend/${id}`);
+  }
+
+  findGuestByUsername(username: string): Observable<any> {
+    return this.http.get(`${this.URL}/profile/get-guest-by-username/${username}`)
+  }
+
+  findAllGuestPost(id: number):Observable<any> {
+    return this.http.get(`${this.URL}/profile/guest-post/${id}`);
   }
 }
