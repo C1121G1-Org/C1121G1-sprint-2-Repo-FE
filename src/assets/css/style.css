@@ -42,10 +42,10 @@ iframe {
   border: 0;
 }
 
-a, a:focus, a:hover {
-  text-decoration: none;
-  outline: 0;
-}
+/*a, a:focus, a:hover {*/
+/*  text-decoration: none;*/
+/*  outline: 0;*/
+/*}*/
 
 a:focus, a:hover {
   background-color: #fd267a;
