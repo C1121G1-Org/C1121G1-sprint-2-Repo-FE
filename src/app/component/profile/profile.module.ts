@@ -6,6 +6,7 @@ import { PersonalProfileComponent } from './personal-profile/personal-profile.co
 import { FriendProfileComponent } from './friend-profile/friend-profile.component';
 
 
+
 @NgModule({
   declarations: [PersonalProfileComponent, FriendProfileComponent],
   imports: [
