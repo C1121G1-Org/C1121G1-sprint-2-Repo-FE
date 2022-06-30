@@ -149,8 +149,8 @@
   </div>
 
 
-<!--&lt;!&ndash;  modal update&ndash;&gt;-->
-<!--  <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--  modal update-->
+<!--  <div style="margin-left: 500px " class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
 <!--       aria-hidden="true">-->
 <!--    <div class="modal-dialog" role="document">-->
 <!--      <div class="modal-content">-->
@@ -223,186 +223,185 @@
 <!--  </div>-->
 <!--</div>-->
 
-  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-<!--  <div class="modal fade" id="searchModal"-->
-<!--       tabindex="-1" role="dialog"-->
-<!--       aria-labelledby="exampleModalLabel"-->
-<!--       aria-hidden="true">-->
-<!--    <div class="modal-dialog" role="document">-->
+<!--  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
 <!--      <div class="modal-content">-->
 <!--        <div class="modal-header">-->
-<!--          <h5 class="modal-title" id="exampleModalLabel"> Đăng bài</h5>-->
+<!--          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
 <!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
 <!--            <span aria-hidden="true">&times;</span>-->
 <!--          </button>-->
 <!--        </div>-->
-<!--        &lt;!&ndash;      <form [formGroup]="createPostForm" (ngSubmit)="create(successButton, errorModalBtn)">&ndash;&gt;-->
-<!--        <form [formGroup]="updatePostForm" (ngSubmit)="edit(closeBtn)">-->
-<!--          <div class="modal-body">-->
-<!--            <div class="post-modal">-->
-<!--              <div class="post-top-modal">-->
-<!--                <div class="dp-modal">-->
-<!--                  <img class="dp-modal"-->
-<!--                       src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/277764882_4996598660453902_1229234421387180288_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=TwY6i-QDJrQAX_FUJxn&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT_nGhJhlS3twUWApAunwQap9wpQFQSk5wAqLUEpI6oC1A&oe=62B059D8"-->
-<!--                       alt="">-->
-<!--                </div>-->
-<!--                <div class="post-info-modal">-->
-<!--                  <p class="name-modal" style="margin-bottom: 0">Phạm Văn Hậu</p>-->
-
-<!--                  <div>-->
-<!--                    <select class="custom-select custom-select-sm" formControlName="privacy">-->
-<!--                      <option selected value="Công khai" [selected]="postUpdate.privacy">Công khai-->
-<!--                      </option>-->
-<!--                      <option value="Riêng tư">Riêng tư</option>-->
-<!--                    </select>-->
-<!--                  </div>-->
-<!--                </div>-->
-
-<!--                <div class="post-info-modal">-->
-<!--                <span >Đang cảm thấy-->
-<!--                  <span style="border: none" >{{postUpdate.feeling}}</span></span>-->
-<!--                </div>-->
-
-<!--              </div>-->
-<!--              <br>-->
-
-<!--              <div>-->
-<!--                <div>-->
-<!--                  <ckeditor formControlName="content">{{postUpdate.content}}</ckeditor>-->
-<!--                </div>-->
-<!--&lt;!&ndash;                <div&ndash;&gt;-->
-<!--&lt;!&ndash;                  *ngIf="createPostForm.controls.content.invalid &&&ndash;&gt;-->
-<!--&lt;!&ndash;              (createPostForm.controls.content.dirty || createPostForm.controls.content.touched&ndash;&gt;-->
-<!--&lt;!&ndash;              || createPostForm.controls.content.errors?.empty)">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <small&ndash;&gt;-->
-<!--&lt;!&ndash;                    *ngIf="createPostForm.controls.content.hasError('required')&ndash;&gt;-->
-<!--&lt;!&ndash;                || createPostForm.controls.content.errors.empty"&ndash;&gt;-->
-<!--&lt;!&ndash;                    class="form-text text-danger">Vui lòng nhập nội dung.</small>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--              </div>-->
-
-<!--              <div class="form-group col-md-12">-->
-<!--                <label for="guestId">GuestId: <span class="text-danger">(*)</span> </label>-->
-<!--                <input formControlName="guestId" type="text" class="form-control" name="guestId" id="guestId">-->
-<!--              </div>-->
-
-<!--              <div class="error_msg"></div>-->
-<!--              <div class="uploaded_file_view" id="uploaded_view">-->
-<!--                &lt;!&ndash;                <div class id="uploaded_view">&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <img style="width: 475px; height: 300px" src="https://archive.org/download/no-photo-available/no-photo-available.png">&ndash;&gt;-->
-<!--                <img style="width: 100%; height: 100%"-->
-<!--                     src="{{postUpdate.image}}" [hidden]="">-->
-<!--                &lt;!&ndash;            <span class="file_remove" hidden>X</span>&ndash;&gt;-->
-<!--              </div>-->
-
-<!--              <div class="post-modal">-->
-<!--                <div class="post-bottom ">-->
-<!--                  <div class="action">-->
-<!--                    <span style="margin-left: 15px">Thêm vào bài viết</span>-->
-<!--                  </div>-->
-<!--                  <div class="action button_outer">-->
-<!--                    <label>-->
-<!--                      <input type="file" id="upload_file" class="image-upload"-->
-<!--                             hidden >-->
-<!--                      <i class="fa fa-image" style="color: #dd7744"></i>-->
-
-<!--                      <span style="color: #dd7744">Thêm hình ảnh</span>-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                  <div class="action">-->
-<!--                    <div class="container">-->
-<!--                      <div class="menu-bar-content"-->
-<!--                           style="height: 30px">-->
-<!--                        <ul style="height: 30px">-->
-<!--                          <li formControlName="feeling">-->
-<!--                            <a type="button"-->
-<!--                               style="color:#d74;">-->
-<!--                              <i class="fa fa-smile"></i>-->
-<!--                              <span>Cảm xúc</span>-->
-<!--                              <div class="sub-menu">-->
-<!--                                <ul>-->
-<!--                                  <li value="Vui vẻ">-->
-
-<!--                                    <a type="button" class="selectFeeling">-->
-<!--                                      <input #element type="text" hidden value="Vui vẻ">-->
-<!--                                      <div aria-label="Vui vẻ"-->
-<!--                                           role="button"-->
-<!--                                           tabindex="-1">-->
-<!--                                        <img height="20"-->
-<!--                                             width="20"-->
-<!--                                             src="img/VuiVe.png"> Vui vẻ-->
-<!--                                      </div>-->
-<!--                                    </a>-->
-<!--                                  </li>-->
-<!--                                  <li value="Buồn" >-->
-<!--                                    <a type="button" class="selectFeeling">-->
-<!--                                      <input #element1 type="text" hidden value="Buồn">-->
-<!--                                      <div aria-label="Buồn"-->
-<!--                                           role="button"-->
-<!--                                           tabindex="-1">-->
-<!--                                        <img height="20"-->
-<!--                                             width="20"-->
-<!--                                             src="img/Buon.jfif"> Buồn-->
-<!--                                      </div>-->
-<!--                                    </a>-->
-<!--                                  </li>-->
-<!--                                  <li value="Điên" >-->
-<!--                                    <a type="button" class="selectFeeling">-->
-<!--                                      <input #element2 type="text" hidden value="Điên">-->
-<!--                                      <div aria-label="Điên"-->
-<!--                                           role="button"-->
-<!--                                           tabindex="-1">-->
-<!--                                        <img height="20"-->
-<!--                                             width="20"-->
-<!--                                             src="img/Dien.png"> Điên-->
-<!--                                      </div>-->
-<!--                                    </a>-->
-<!--                                  </li>-->
-
-<!--                                </ul>-->
-<!--                              </div>-->
-<!--                            </a>-->
-<!--                          </li>-->
-
-<!--                        </ul>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-
-<!--                <div class="row col-md-12 ml-auto mr-auto preview"></div>-->
-<!--                <div class="modal-footer">-->
-<!--                  <button #closeBtn type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy</button>-->
-<!--                  <button type="submit" class="btn btn-info btn-sm">Đăng bài</button>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-
-<!--          </div>-->
-<!--        </form>-->
+<!--        <div class="modal-body">-->
+<!--          ...-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--          <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--        </div>-->
 <!--      </div>-->
 <!--    </div>-->
 <!--  </div>-->
+
+
+
+  <div class="modal fade" id="searchModal"
+       tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Đăng bài</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!--      <form [formGroup]="createPostForm" (ngSubmit)="create(successButton, errorModalBtn)">-->
+        <form [formGroup]="updatePostForm" (ngSubmit)="updatePost(closeBtn)">
+          <div class="modal-body">
+            <div class="post-modal">
+              <div class="post-top-modal">
+                <div class="dp-modal">
+                  <img class="dp-modal"
+                       src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/277764882_4996598660453902_1229234421387180288_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=TwY6i-QDJrQAX_FUJxn&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT_nGhJhlS3twUWApAunwQap9wpQFQSk5wAqLUEpI6oC1A&oe=62B059D8"
+                       alt="">
+                </div>
+                <div class="post-info-modal">
+                  <p class="name-modal" style="margin-bottom: 0">Phạm Văn Hậu</p>
+
+                  <div>
+                    <select class="custom-select custom-select-sm" formControlName="privacy">
+                      <option  value="Công khai" selected>Công khai
+                      </option>
+                      <option value="Riêng tư">Riêng tư</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="post-info-modal">
+                <span [hidden]="hiddenFeeling">Đang cảm thấy
+                  <span style="border: none" >{{feeling1}}</span></span>
+                </div>
+
+              </div>
+              <br>
+              <div>
+                <div>
+                  <ckeditor formControlName="content"></ckeditor>
+                </div>
+<!--                <div-->
+<!--                  *ngIf="createPostForm.controls.content.invalid &&-->
+<!--              (createPostForm.controls.content.dirty || createPostForm.controls.content.touched-->
+<!--              || createPostForm.controls.content.errors?.empty)">-->
+<!--                  <small-->
+<!--                    *ngIf="createPostForm.controls.content.hasError('required')-->
+<!--                || createPostForm.controls.content.errors.empty"-->
+<!--                    class="form-text text-danger">Vui lòng nhập nội dung.</small>-->
+<!--                </div>-->
+              </div>
+
+              <div class="form-group col-md-12">
+<!--                <label for="guestId">GuestId: <span class="text-danger">(*)</span> </label>-->
+                <input formControlName="guestId" type="text" class="form-control" name="guestId" id="guestId" hidden>
+              </div>
+
+              <div class="error_msg"></div>
+              <div class="uploaded_file_view" id="uploaded_view">
+                <!--                <div class id="uploaded_view">-->
+                <!--                    <img style="width: 475px; height: 300px" src="https://archive.org/download/no-photo-available/no-photo-available.png">-->
+                <img style="width: 100%; height: 100%"
+                     src="{{imgVip}}" [hidden]="hidden">
+                <!--            <span class="file_remove" hidden>X</span>-->
+              </div>
+
+              <div class="post-modal">
+                <div class="post-bottom ">
+                  <div class="action">
+                    <span style="margin-left: 15px">Thêm vào bài viết</span>
+                  </div>
+                  <div class="action button_outer">
+                    <label>
+                      <input type="file" id="upload_file" class="image-upload"
+                             hidden (change)="showPreview($event)">
+                      <i class="fa fa-image" style="color: #dd7744"></i>
+
+                      <span style="color: #dd7744">Thêm hình ảnh</span>
+                    </label>
+                  </div>
+                  <div class="action">
+                    <div class="container">
+                      <div class="menu-bar-content"
+                           style="height: 30px">
+                        <ul style="height: 30px">
+                          <li formControlName="feeling">
+                            <a type="button"
+                               style="color:#d74;">
+                              <i class="fa fa-smile"></i>
+                              <span>Cảm xúc</span>
+                              <div class="sub-menu">
+                                <ul>
+                                  <li value="Vui vẻ" (click)="showFeeling(element)">
+
+                                    <a type="button" class="selectFeeling">
+                                      <input #element type="text" hidden value="Vui vẻ">
+                                      <div aria-label="Vui vẻ"
+                                           role="button"
+                                           tabindex="-1">
+                                        <img height="20"
+                                             width="20"
+                                             src="img/VuiVe.png"> Vui vẻ
+                                      </div>
+                                    </a>
+                                  </li>
+                                  <li value="Buồn" (click)="showFeeling(element1)">
+                                    <a type="button" class="selectFeeling">
+                                      <input #element1 type="text" hidden value="Buồn">
+                                      <div aria-label="Buồn"
+                                           role="button"
+                                           tabindex="-1">
+                                        <img height="20"
+                                             width="20"
+                                             src="img/Buon.jfif"> Buồn
+                                      </div>
+                                    </a>
+                                  </li>
+                                  <li value="Điên" (click)="showFeeling(element2)">
+                                    <a type="button" class="selectFeeling">
+                                      <input #element2 type="text" hidden value="Điên">
+                                      <div aria-label="Điên"
+                                           role="button"
+                                           tabindex="-1">
+                                        <img height="20"
+                                             width="20"
+                                             src="img/Dien.png"> Điên
+                                      </div>
+                                    </a>
+                                  </li>
+
+                                </ul>
+                              </div>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row col-md-12 ml-auto mr-auto preview"></div>
+                <div class="modal-footer">
+                  <button #closeBtn type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Hủy</button>
+                  <button type="submit" class="btn btn-info btn-sm">Đăng bài</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
