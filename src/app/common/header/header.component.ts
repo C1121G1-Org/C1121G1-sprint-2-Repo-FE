@@ -176,10 +176,10 @@ export class HeaderComponent implements OnInit {
 
   /*
     Created by ChienLV
-    Date: 15:00 29/06/2022
-    Desc: removeSuggestion(id) => Từ chối lời gợi ý kết bạn dựa vào id của bảng guest_friend;
+    Date: 11:00 30/06/2022
+    Desc: addFriend(idGuest, idFriend) => Gửi lời gợi ý kết bạn dựa vào idGuest, idFriend;
   */
-  addFriend(idGuest: number, idFriend: number) {
+  addFriend(idGuest: number, idFriend: number, idGuestFriend: number) {
     idGuest = this.guest.id;
     console.log(`idGuest:${idGuest},idFriend:${idFriend}`);
     if (idGuest != idFriend) {
@@ -192,8 +192,7 @@ export class HeaderComponent implements OnInit {
             friendDto : this.friend
           }
           this.guestFriendService.addFriend(this.guestFriend).subscribe(()=>{
-            alert('ok');
-            this.removeSuggestion(this.guest.id);
+            this.removeSuggestion(idGuestFriend);
           })
         })
       })
