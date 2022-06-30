@@ -1,4 +1,5 @@
 import {Wallet} from "./wallet";
+import {Account} from "./account";
 
 export interface Guest {
   id?: number;

@@ -8,6 +8,13 @@ import {GuestFriend} from "../component/profile/model/guest-friend";
 })
 export class GuestFriendService {
 
+  /*
+   Created by ChienLV
+   Date: 15:00 29/06/2022
+ */
+  guestFriendApi = 'http://localhost:8080/api/guest-friend/';
+
+
   URL = "http://localhost:8080";
 
   constructor(private http: HttpClient) {
@@ -33,15 +40,41 @@ export class GuestFriendService {
     return this.http.get(`${this.URL}/profile/guest-friend/${guestId}/${friendId}`);
   }
 
+  /*
+    Created by ChienLV
+    Date: 15:00 29/06/2022
+  */
   deleteFriend(id: number): Observable<any> {
     return this.http.delete(`${this.URL}/profile/delete-friend/${id}`);
   }
+
 
   findGuestByUsername(username: string): Observable<any> {
     return this.http.get(`${this.URL}/profile/get-guest-by-username/${username}`)
   }
 
-  findAllGuestPost(id: number):Observable<any> {
+  findAllGuestPost(id: number): Observable<any> {
     return this.http.get(`${this.URL}/profile/guest-post/${id}`);
+  }
+
+  getFriendRequests(id: number): Observable<any> {
+    return this.http.get<any>(this.guestFriendApi + 'list-friend-requests/' + id);
+  }
+
+  getFriendSuggestions(id: number): Observable<any> {
+    return this.http.get<any>(this.guestFriendApi + 'list-friend-suggestions/' + id);
+  }
+
+  acceptFriend(id: number): Observable<void> {
+    return this.http.get<void>(this.guestFriendApi + 'accept-friend-request/' + id);
+  }
+
+  refuseFriend(id: number): Observable<void> {
+    return this.http.get<void>(this.guestFriendApi + 'refuse-friend-request/' + id);
+  }
+
+  removeSuggestion(id: number): Observable<void> {
+    return this.http.get<void>(this.guestFriendApi + 'remove-friend-suggestion/' + id);
+
   }
 }
