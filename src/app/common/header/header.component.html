@@ -21,10 +21,11 @@ Fixed Navigation
       <form class="d-flex">
         <input style="border-radius: 20px" class="form-control me-2" type="search" placeholder="Tìm kiếm tình yêu" aria-label="Search">
       </form>
+
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="navbar-nav ml-auto text-center">
           <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            <a class="nav-link dropdown-toggle" href="#"  role="button"
                data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
               Kết bạn
@@ -48,15 +49,15 @@ Fixed Navigation
                     <div class="friend-request-item" *ngFor="let friendRequest of friendRequests">
                       <div class="friend-request-item-left">
                         <a href="#">
-                          <img src="{{friendRequest.friend.image}}" alt="">
+                          <img src="{{friendRequest.friendDto.image}}" alt="">
                         </a>
                       </div>
                       <div class="friend-request-item-right">
                         <div class="friend-request-item-name">
-                          <a href="#">{{friendRequest.friend.name}}</a>
+                          <a href="#">{{friendRequest.friendDto.name}}</a>
                         </div>
                         <div class="friend-request-item-mutual-friends">
-                          {{friendRequest.friend.dateOfBirth | date: "dd/MM/yyyy"}}
+                          {{friendRequest.friendDto.dateOfBirth | date: "dd/MM/yyyy"}}
                         </div>
                         <div class="friend-request-item-button">
                           <div class="friend-request-item-button-confirm">
@@ -99,19 +100,19 @@ Fixed Navigation
                     <div class="friend-request-item" *ngFor="let friendSuggestion of friendSuggestions">
                       <div class="friend-request-item-left">
                         <a href="#">
-                          <img src="{{friendSuggestion.friend.image}}" alt="">
+                          <img src="{{friendSuggestion.friendDto.image}}" alt="">
                         </a>
                       </div>
                       <div class="friend-request-item-right">
                         <div class="friend-request-item-name">
-                          <a href="#">{{friendSuggestion.friend.name}}</a>
+                          <a href="#">{{friendSuggestion.friendDto.name}}</a>
                         </div>
                         <div class="friend-request-item-mutual-friends">
-                          {{friendSuggestion.friend.dateOfBirth | date: "dd/MM/yyyy"}}
+                          {{friendSuggestion.friendDto.dateOfBirth | date: "dd/MM/yyyy"}}
                         </div>
                         <div class="friend-request-item-button">
                           <div class="friend-request-item-button-confirm">
-                            <button class="friend-request-item-button-yes"><a (click)="addFriend(friendSuggestion.guest.id,friendSuggestion.friend.id)">Thêm bạn bè</a></button>
+                            <button class="friend-request-item-button-yes"><a (click)="addFriend(friendSuggestion.guestDto.id,friendSuggestion.friendDto.id)">Thêm bạn bè</a></button>
                             <button class="friend-request-item-button-no"><a (click)="removeSuggestion(friendSuggestion.id)">Xóa, gỡ bỏ</a></button>
                           </div>
                         </div>
@@ -120,6 +121,11 @@ Fixed Navigation
                   </div>
                 </div>
               </div>
+              Bạn bè
+            </div>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index.html">Lời mời kết bạn</a>
+              <a class="dropdown-item" href="onepage-slider.html">Gợi ý kết bạn</a>
             </div>
           </li>
           <li class="nav-item ">
@@ -134,7 +140,6 @@ Fixed Navigation
           <li class="nav-item ">
             <a class="nav-link" routerLink="/searchList">Tìm kiếm bạn bè</a>
           </li>
-
           <!--                    <li class="nav-item dropdown">-->
           <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
           <!--                           data-toggle="dropdown"-->

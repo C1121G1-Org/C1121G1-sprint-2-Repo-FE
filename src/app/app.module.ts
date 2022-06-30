@@ -15,6 +15,7 @@ import {GuestFriendModule} from "./component/guest-friend/guest-friend.module";
 import {HomepageModule} from "./component/homepage/homepage.module";
 import {PostModule} from "./component/post/post.module";
 import {ReportModule} from "./component/report/report.module";
+
 import {NgxPayPalModule} from "ngx-paypal";
 import {FormsModule} from "@angular/forms";
 import {AngularFireModule} from '@angular/fire';
@@ -54,7 +55,6 @@ import {MoneyChargeComponent} from "./component/wallet/money-charge/money-charge
     BrowserAnimationsModule,
     MatSliderModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-
   ],
   providers: [],
   bootstrap: [AppComponent]

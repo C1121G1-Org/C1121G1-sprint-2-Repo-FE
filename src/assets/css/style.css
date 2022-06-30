@@ -42,10 +42,10 @@ iframe {
   border: 0;
 }
 
-/*a, a:focus, a:hover {*/
-/*  text-decoration: none;*/
-/*  outline: 0;*/
-/*}*/
+a, a:focus, a:hover {
+  text-decoration: none;
+  outline: 0;
+}
 
 a:focus, a:hover {
   background-color: #fd267a;
@@ -1479,7 +1479,7 @@ a:focus, a:hover {
   width: 35px;
 }
 
-.team .member-photo .mask ul li a::hover {
+.team .member-photo .mask ul li a:hover {
   background-color: #6cb670;
   border: 1px solid transparent;
 }
