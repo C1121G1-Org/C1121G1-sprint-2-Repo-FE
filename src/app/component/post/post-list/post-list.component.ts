@@ -1,12 +1,12 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {PostService} from "../../../service/post.service";
-
 import {NgxSpinnerService} from "ngx-spinner";
 import {ILikePostDto} from "../../../Dto/ILikePostDto";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IPostDto} from "../../../dto/IPostDto";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
+
 
 
 @Component({
@@ -34,6 +34,7 @@ export class PostListComponent implements OnInit {
 
   constructor(private postService: PostService, private spinner: NgxSpinnerService,
               @Inject(AngularFireStorage) private storage: AngularFireStorage) {
+
     this.updatePostForm = new FormGroup({
       id: new FormControl(''),
       image: new FormControl(),
@@ -162,6 +163,7 @@ export class PostListComponent implements OnInit {
   }
 
 
+
   updatePost(closeBtn: HTMLButtonElement) {
     if (this.selectedImage){
       this.alertImage = '';
@@ -191,8 +193,6 @@ export class PostListComponent implements OnInit {
         })
       ).subscribe();
     }
-
-
 
   }
 }

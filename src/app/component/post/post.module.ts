@@ -5,8 +5,10 @@ import { PostRoutingModule } from './post-routing.module';
 import { PostListComponent } from './post-list/post-list.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {NgxSpinnerModule} from "ngx-spinner";
+
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CKEditorModule} from "ckeditor4-angular";
-import {ReactiveFormsModule} from "@angular/forms";
+
 
 
 @NgModule({
@@ -16,8 +18,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     PostRoutingModule,
     InfiniteScrollModule,
     NgxSpinnerModule,
-    CKEditorModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    CKEditorModule
   ]
 })
 export class PostModule { }
