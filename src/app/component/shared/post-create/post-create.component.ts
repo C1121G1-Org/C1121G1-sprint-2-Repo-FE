@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PostService} from "../../../service/post.service";
 import {AngularFireStorage} from "@angular/fire/storage";
-import {Guest} from "../../../models/guest";
 import {finalize} from "rxjs/operators";
 import {Router} from "@angular/router";
 
@@ -120,7 +119,6 @@ export class PostCreateComponent implements OnInit {
       this.imgVip = reader.result as string;
     };
   }
-
 
   showFeeling(element: any) {
     console.log(element.value);
