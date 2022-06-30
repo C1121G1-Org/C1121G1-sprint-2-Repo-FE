@@ -47,6 +47,14 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
+   Created by ChienLV
+   Date: 15:00 29/06/2022
+   Desc: getFriendRequests(id) và getFriendSuggestions(id) => Lấy id của guest khi đăng nhập vào;
+ */
+    this.getFriendRequests(1);
+    this.getFriendSuggestions(1);
+
     this.loadHeader();
   }
 
