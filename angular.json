@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           },
@@ -88,7 +89,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           }
@@ -123,6 +125,6 @@
   },
   "defaultProject": "sprint2-FE",
   "cli": {
-    "analytics": "0fee2bb3-4a68-4a2d-ba1d-f7d534101dac"
+    "analytics": "4fe86f10-f1a8-4ad3-b27e-44d683393fe7"
   }
 }
