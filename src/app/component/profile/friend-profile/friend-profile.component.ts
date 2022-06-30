@@ -57,7 +57,7 @@ export class FriendProfileComponent implements OnInit {
 
   reload() {
     this.closeErrModal.nativeElement.click();
-    this.router.navigate(['/']);
+    this.router.navigate(['']);
   }
 
   addFriend() {

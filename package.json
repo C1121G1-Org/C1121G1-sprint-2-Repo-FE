@@ -19,7 +19,6 @@
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
-    "bootstrap": "^4.6.1",
     "chart.js": "^3.8.0",
     "ckeditor4-angular": "^3.1.0",
     "ngx-countdown": "^11.0.3",
