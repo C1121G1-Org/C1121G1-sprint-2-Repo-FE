@@ -77,4 +77,5 @@ export class GuestFriendService {
     return this.http.get<void>(this.guestFriendApi + 'remove-friend-suggestion/' + id);
 
   }
+
 }

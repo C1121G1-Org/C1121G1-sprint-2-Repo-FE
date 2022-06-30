@@ -4,7 +4,9 @@ import {ShareService} from "../../service/security/share.service";
 import {Router} from "@angular/router";
 
 import {GuestFriendService} from "../../service/guest-friend.service";
-import { GuestFriend } from 'src/app/component/profile/model/guest-friend';
+import {Guest} from "../../component/profile/model/guest";
+import {Friend} from "../../component/profile/model/friend";
+import {GuestFriend} from "../../component/profile/model/guest-friend";
 import {GuestDto} from "../../dto/guest-dto";
 
 @Component({
@@ -24,21 +26,23 @@ export class HeaderComponent implements OnInit {
   friendSuggestions: GuestFriend[] = [];
   flagRequest = false;
   flagSuggestion = false;
+  guest: Guest = {id: 1};
+  friend: Friend = {};
+  guestFriend: GuestFriend;
+
+  checkGuestFriend = false ;
 
   /*
      Created by TuanPA
      Date: 09:30 26/06/2022
    */
-  @Output()
-  sendGuest = new EventEmitter<GuestDto>();
 
-  guest: GuestDto = {id: 6, name: 'hauPV', address: '166NX'}
   username: string;
   imageLink: string;
   idPatient: number;
   currentUser: string;
   role: string;
-  isLoggedIn = false;
+  isLoggedIn = true;
 
   /*
      Created by TuanPA
@@ -63,7 +67,7 @@ export class HeaderComponent implements OnInit {
     this.getFriendSuggestions(1);
 
     this.loadHeader();
-    this.sendGuest.emit(this.guest);
+
   }
 
 
@@ -101,7 +105,7 @@ export class HeaderComponent implements OnInit {
     this.guestFriendService.getFriendRequests(id).subscribe((data) => {
       this.flagRequest = false;
       this.friendRequests = data;
-      if (this.friendRequests.length === 0){
+      if (this.friendRequests.length === 0) {
         this.flagRequest = true;
         alert(this.flagRequest);
       }
@@ -148,7 +152,7 @@ export class HeaderComponent implements OnInit {
     this.guestFriendService.getFriendSuggestions(id).subscribe((data) => {
       this.flagSuggestion = false;
       this.friendSuggestions = data;
-      if (this.friendSuggestions.length === 0){
+      if (this.friendSuggestions.length === 0) {
         this.flagSuggestion = true;
       }
     }, error => {
@@ -170,4 +174,29 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  /*
+    Created by ChienLV
+    Date: 15:00 29/06/2022
+    Desc: removeSuggestion(id) => Từ chối lời gợi ý kết bạn dựa vào id của bảng guest_friend;
+  */
+  addFriend(idGuest: number, idFriend: number) {
+    idGuest = this.guest.id;
+    console.log(`idGuest:${idGuest},idFriend:${idFriend}`);
+    if (idGuest != idFriend) {
+      this.guestFriendService.getGuest(idGuest).subscribe(data => {
+        this.guest = data;
+        this.guestFriendService.getFriend(idFriend).subscribe(data => {
+          this.friend = data;
+          this.guestFriend = {
+            guestDto: this.guest,
+            friendDto : this.friend
+          }
+          this.guestFriendService.addFriend(this.guestFriend).subscribe(()=>{
+            alert('ok');
+            this.removeSuggestion(this.guest.id);
+          })
+        })
+      })
+    }
+  }
 }
