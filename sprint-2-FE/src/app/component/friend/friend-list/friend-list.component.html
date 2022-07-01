@@ -20,12 +20,12 @@
 
 
   <div *ngIf="!message">
-    <div class="container-fluid" style="display: flex ;justify-content: center ; align-content: center">
+    <div class="container-fluid" style="display: flex ;justify-content: center ; align-content: center ; margin-top: 10px">
       <div class="container-fluid">
         <div class="row d-inline-flex">
 
-          <div class="col-6 col-sm-6 col-md-3  p-2" *ngFor="let f of friends">
-            <div class="card  shadow-lg p-3 mb-5 bg-white " style="width: 18rem;">
+          <div *ngFor="let f of friends">
+            <div class="card  shadow-lg p-3 mb-5 bg-white " style="width: 18rem; margin-right: 12px">
               <img src="{{f.image}}" width="130" height="200" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">{{f.nickName}}</h5>
@@ -50,7 +50,7 @@
                   <span><a (click)="onOpenDeleteModal(f)" style="color: white">
                     <i class="fa fa-trash"></i>Xóa</a></span>
                   </button>
-                </div>
+                </div>  
               </div>
             </div>
           </div>

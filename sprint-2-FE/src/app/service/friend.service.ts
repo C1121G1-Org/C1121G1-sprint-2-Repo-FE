@@ -18,8 +18,9 @@ export class FriendService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(name: string, page: number): Observable<any> {
-    return this.http.get<any>(API_URL + `/list?page=${page}&keyName=${name}`);
+
+  getAll(name: any, page: number, id: number): Observable<any> {
+    return this.http.get<any>(API_URL + `/list/` + `${5}` + `?page=${page}&keyName=${name}`);
   }
 
   deleteFriend(a: Friend): Observable<Friend> {

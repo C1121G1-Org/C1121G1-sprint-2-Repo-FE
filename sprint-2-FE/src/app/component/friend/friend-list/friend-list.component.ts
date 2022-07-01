@@ -20,6 +20,7 @@ export class FriendListComponent implements OnInit {
   name: any = '';
   check: boolean;
   deleteFriend: Friend;
+  id: number;
 
   constructor(private friendService: FriendService) { }
 
@@ -29,7 +30,7 @@ export class FriendListComponent implements OnInit {
 
   getAll() {
     this.message = false;
-    this.friendService.getAll('', this.page).subscribe(data => {
+    this.friendService.getAll('', this.page, this.id).subscribe(data => {
       // @ts-ignore
       this.friends = data.content;
       this.page = data.number;
@@ -50,7 +51,7 @@ export class FriendListComponent implements OnInit {
 
   previous() {
     if (this.page > 0) {
-      this.friendService.getAll(this.name, this.page - 1).subscribe(
+      this.friendService.getAll(this.name, this.page - 1, this.id).subscribe(
         data => {
           this.friends = data.content;
           this.page = data.number;
@@ -72,7 +73,7 @@ export class FriendListComponent implements OnInit {
 
   next() {
     if (this.page < this.totalPages - 1) {
-      this.friendService.getAll(this.name, this.page + 1).subscribe(
+      this.friendService.getAll(this.name, this.page + 1, this.id).subscribe(
         data => {
           this.friends = data.content;
           this.page = data.number;
@@ -107,10 +108,10 @@ export class FriendListComponent implements OnInit {
     });
   }
 
-  search(name: string) {
+  search(name: any) {
     this.page = 0;
     name = name.trim();
-    this.friendService.getAll(name, this.page).subscribe(data => {
+    this.friendService.getAll(name, this.page, this.id).subscribe(data => {
       this.friends = data.content;
       this.totalPages = data.totalPages;
       this.page = data.number;
