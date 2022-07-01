@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TokenStorageService} from "../../service/security/token-storage.service";
 import {ShareService} from "../../service/security/share.service";
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 import {GuestFriendService} from "../../service/guest-friend.service";
 import {Guest} from "../../component/profile/model/guest";
