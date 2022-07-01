@@ -1,0 +1,113 @@
+<!--
+  Created by khoaVC
+  Role: Guest
+  Time: 10:00 21/06/2022
+  HTML: all
+-->
+
+
+<div class="main-block">
+  <div class="left-part">
+    <i class="fas fa-envelope"></i>
+    <i class="fas fa-at"></i>
+    <i class="fas fa-mail-bulk"></i>
+  </div>
+  <form [formGroup]="updateForm" (ngSubmit)="update()">
+    <h1 class="text-uppercase font-italic font-weight-bold text-monospace">Chọn ảnh đại diện và trả lời khảo sát</h1>
+    <div class="info">
+      <div class="avatar-upload">
+        <div class="avatar-edit">
+          <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="onImageChange($event)"/>
+          <label for="imageUpload"><i class="fa-solid fa-pen custom-icon"></i></label>
+
+        </div>
+        <div class="avatar-preview">
+          <div  id="imagePreview" style="background-image: url(https://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png);">
+          </div>
+        </div>
+      </div>
+      <p class="font-italic">Mong bạn trả lời các câu hỏi để web có thể hoạt động hiệu quả và mang lại giá trị tốt nhất
+        cho các thành viên</p>
+      <br>
+      <label class="font-italic">Sở thích</label>
+
+      <div *ngFor="let n of favorites">
+        <div class="form-group form-check">
+          <input #checkboxFavorite type="checkbox" class="form-check-input" id="exampleCheck1" [value]="n.id"
+                 (change)="onCheckboxFavoriteChange(checkboxFavorite.value, checkboxFavorite.checked)">
+          <label class="form-check-label" for="exampleCheck1">{{n.name}}</label>
+        </div>
+      </div>
+      <br>
+      <br>
+            <div class="row">
+              <div class="col-4 font-italic">
+                Tình trạng hôn nhân
+              </div>
+              <div class="col-4">
+                <input class="form-check-input" type="radio" name="maritalStatus" id="inlineRadio1" formControlName="maritalStatus" [value]="true">
+                <label class="form-check-label" for="inlineRadio1">Độc thân</label>
+              </div>
+              <div class="col-4">
+                <input class="form-check-input" type="radio" name="maritalStatus" id="inlineRadio2" formControlName="maritalStatus" [value]="false">
+                <label class="form-check-label" for="inlineRadio2">Đã kết hôn</label>
+              </div>
+            </div>
+      <br>
+      <p class="font-italic">Mục đích tham gia</p>
+
+      <div *ngFor="let m of targets">
+        <div class="form-group form-check">
+          <input #checkboxTarget type="checkbox" class="form-check-input" id="exampleCheck1" [value]="m.id"
+                 (change)="onCheckboxTargetChange(checkboxTarget.value, checkboxTarget.checked)">
+          <label class="form-check-label" for="exampleCheck1">{{m.name}}</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit">Xong</button>
+  </form>
+</div>
+
+<button #btnSuccess type="button" class="btn btn-primary" data-toggle="modal" data-target="#successfulModal" [hidden]="true">
+</button>
+
+<!--success modal-->
+<div id="successfulModal" class="modal fade">
+  <div class="modal-dialog modal-confirm modal-confirm-success">
+    <div class="modal-content">
+      <div class="modal-header modal-header-success justify-content-center">
+        <div class="icon-box">
+          <i class="material-icons">&#xE876;</i>
+        </div>
+<!--        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+      </div>
+      <div class="modal-body text-center">
+        <h4>THÔNG BÁO!</h4>
+        <p>Cảm ơn bạn đã cập nhật khảo sát thành công.</p>
+        <button type="button" class="btn-modal btn-grad-blue" (click)="confirmSuccess()">OK</button>
+        <button type="button" #btnCloseSuccess class="btn-modal btn-grad-blue" data-dismiss="modal" hidden></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+        $('#imagePreview').hide;
+        $('#imagePreview').fadeIn(650);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#imageUpload").change(function () {
+    readURL(this);
+  });
+</script>

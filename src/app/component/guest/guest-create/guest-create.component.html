@@ -1,0 +1,832 @@
+
+<!--
+  Created by khoaVC
+  Role: Guest
+  Time: 10:00 21/06/2022
+  HTML: all
+-->
+
+
+<div class="body">
+  <div class="container">
+    <div class="title">Đăng ký</div>
+    <div class="content">
+      <form [formGroup]="createForm" (ngSubmit)="create()">
+        <div class="user-details">
+
+          <!--          name-->
+          <div class="input-box">
+            <span class="details">Tên</span>
+            <div class="input-password">
+              <input type="text" placeholder="Tên" required formControlName="name">
+              <div class="eye-position">
+                <i class="fa-solid fa-address-book"></i>
+              </div>
+            </div>
+            <div class="" style="color: red; font-size: 13px"
+                 *ngIf="name.invalid && (name.dirty || name.touched) || name.errors?.name">
+              <span *ngIf="name.errors?.name">{{name.errors?.inValidMessage}}</span>
+              <span *ngIf="(name.dirty || name.touched) && name.errors?.required">Bạn phải nhập tên.</span>
+              <span *ngIf="(name.dirty || name.touched) && name.errors?.pattern">Bạn phải nhập tên không chứa ký tự đặc biệt.</span>
+              <span *ngIf="(name.dirty || name.touched) && (name.errors?.minlength || name.errors?.maxlength)">Bạn phải nhập tên có độ dài từ 6-32 ký tự.</span>
+            </div>
+          </div>
+<!--          userName-->
+          <div class="input-box">
+            <span class="details">Tên đăng nhập <sup class="text-danger">(*)</sup> :</span>
+            <div class="input-password">
+              <input type="text" placeholder="Tên đăng nhập" required formControlName="userName">
+              <div class="eye-position">
+                <i class="fa-solid fa-circle-user"></i>
+              </div>
+            </div>
+		<div class="" style="color: red; font-size: 13px"
+                   *ngIf="userName.invalid && (userName.dirty || userName.touched) || userName.errors?.userName">
+                <span *ngIf="userName.errors?.userName">{{userName.errors?.inValidMessage}}</span>
+                <span *ngIf="(userName.dirty || userName.touched) && userName.errors?.required">Bạn phải nhập tên đăng nhập.</span>
+                <span *ngIf="(userName.dirty || userName.touched) && userName.errors?.pattern">Bạn phải nhập tên đăng nhập không chứa ký tự đặc biệt.</span>
+                <span *ngIf="(userName.dirty || userName.touched) && (userName.errors?.minlength || userName.errors?.maxlength)">Bạn phải nhập tên đăng nhập có độ dài từ 6-32 ký tự.</span>
+            </div>
+          </div>
+
+<!--          dateOfBirth-->
+          <div class="input-box">
+            <span class="details">Ngày sinh <sup class="text-danger">(*)</sup> :</span>
+            <input type="date" style="cursor: pointer;" required formControlName="dateOfBirth">
+            <div class="" style="color: red; font-size: 13px"
+                 *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched) || dateOfBirth.errors?.dateOfBirth">
+              <span *ngIf="dateOfBirth.errors?.dateOfBirth">{{dateOfBirth.errors?.inValidMessage}}</span>
+              <span *ngIf="(dateOfBirth.dirty || dateOfBirth.touched) && dateOfBirth.errors?.required">Bạn phải chọn ngày sinh nhật.</span>
+            </div>
+          </div>
+
+          <!--          createDate-->
+          <div class="input-box">
+            <span class="details">Ngày tạo mới <sup class="text-danger">(*)</sup> :</span>
+            <input type="date" style="cursor: pointer;" required formControlName="createDate" readonly>
+            <div class="" style="color: red; font-size: 13px"
+                 *ngIf="createDate.invalid && (createDate.dirty || createDate.touched) || createDate.errors?.createDate">
+              <span *ngIf="createDate.errors?.createDate">{{createDate.errors?.inValidMessage}}</span>
+              <span *ngIf="(createDate.dirty || createDate.touched) && createDate.errors?.required">Bạn phải chọn ngày tạo mới.</span>
+            </div>
+          </div>
+
+<!--          pw-->
+          <div formGroupName="pw" class="group-name">
+<!--            password-->
+            <div class="input-box">
+              <span class="details">Mật khẩu</span>
+              <div class="input-password">
+                <input [type]="showPassword ? 'text' : 'password'" placeholder="Mật khẩu" class="input-confirm" required formControlName="password">
+                <div class="eye-position">
+                  <i class="fa-solid fa-eye eye-icon" style="cursor: pointer; pointer-events: all;" (click)="changePasswordType()"> </i>
+                </div>
+              </div>
+              <div class="" style="color: red; font-size: 13px"
+                   *ngIf="password.invalid && (password.dirty || password.touched) || password.errors?.password">
+                <span *ngIf="password.errors?.password">{{password.errors?.inValidMessage}}<br></span>
+                <span *ngIf="(password.dirty || password.touched) && password.errors?.required">Bạn phải nhập password.</span>
+                <span *ngIf="(password.dirty || password.touched) && password.errors?.pattern">Bạn phải nhập password không chứa ký tự đặc biệt.</span>
+                <span *ngIf="(password.dirty || password.touched) && (password.errors?.minlength || password.errors?.maxlength)">Bạn phải nhập password có độ dài từ 6-32 ký tự.</span>
+              </div>
+<!--              <div class="" style="color: red; font-size: 13px"-->
+<!--                   *ngIf="pw.invalid && (password.dirty || password.touched) || pw.errors?.password">-->
+<!--                <span *ngIf="pw.errors?.password">{{pw.errors?.inValidMessage}}</span>-->
+<!--                <span *ngIf="(password.dirty || password.touched) && password.errors?.required">Bạn phải nhập tên đăng nhập.</span>-->
+<!--              </div>-->
+            </div>
+<!--            rePassword-->
+            <div class="input-box">
+              <span class="details">Nhập lại mật khẩu</span>
+              <div class="input-password">
+                <input [type]="showRePassword ? 'text' : 'password'" placeholder="Nhập lại mật khẩu" required formControlName="rePassword">
+                <div class="eye-position">
+                  <i class="fa-solid fa-eye eye-icon"
+                     style="cursor: pointer; pointer-events: all;" (click)="changeRePasswordType()">
+                  </i>
+                </div>
+              </div>
+              <div class="" style="color: red; font-size: 13px"
+                   *ngIf="pw.invalid && (rePassword.dirty || rePassword.touched) || pw.errors?.rePassword">
+                <span *ngIf="pw.errors?.rePassword">{{pw.errors?.inValidMessage}}<br></span>
+                <span *ngIf="(rePassword.dirty || rePassword.touched) && rePassword.errors?.required">Bạn phải xác nhận lại password.</span>
+                <span *ngIf="(rePassword.dirty || rePassword.touched) && rePassword.errors?.pattern">Bạn phải nhập password không chứa ký tự đặc biệt.</span>
+                <span *ngIf="(rePassword.dirty || rePassword.touched) && (rePassword.errors?.minlength || rePassword.errors?.maxlength)">Bạn phải nhập password có độ dài từ 6-32 ký tự.</span>
+              </div>
+
+<!--              <div class="" style="color: red; font-size: 13px"-->
+<!--                   *ngIf="pw.invalid && (rePassword.dirty || rePassword.touched) || pw.errors?.rePassword">-->
+<!--                <span *ngIf="pw.errors?.rePassword">{{pw.errors?.inValidMessage}}<br></span>-->
+<!--                <span *ngIf="(rePassword.dirty || rePassword.touched) && rePassword.errors?.required">Bạn phải xác nhận lại mật khẩu.</span>-->
+<!--              </div>-->
+            </div>
+          </div>
+
+<!--          career-->
+          <div class="input-box">
+            <span class="details">Nghề nghiệp</span>
+            <div class="input-password">
+              <input type="text" placeholder="Nghề nghiệp" required formControlName="career">
+              <div class="eye-position">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+            </div>
+            <div class="" style="color: red; font-size: 13px"
+                 *ngIf="career.invalid && (career.dirty || career.touched) || career.errors?.career">
+              <span *ngIf="career.errors?.career">{{career.errors?.inValidMessage}}</span>
+              <span *ngIf="(career.dirty || career.touched) && career.errors?.required">Bạn phải nhập nghề nghiệp.</span>
+            </div>
+          </div>
+
+<!--          address-->
+          <div class="input-box">
+            <span class="details">Địa chỉ</span>
+            <div class="input-password">
+              <input type="text" placeholder="Địa chỉ" required formControlName="address">
+              <div class="eye-position">
+                <i class="fa-solid fa-address-book"></i>
+              </div>
+            </div>
+            <div class="" style="color: red; font-size: 13px"
+                 *ngIf="address.invalid && (address.dirty || address.touched) || address.errors?.address">
+              <span *ngIf="address.errors?.address">{{address.errors?.inValidMessage}}</span>
+              <span *ngIf="(address.dirty || address.touched) && address.errors?.required">Bạn phải nhập địa chỉ.</span>
+            </div>
+          </div>
+
+<!--          em-->
+          <div formGroupName="em" class="group-name">
+<!--            email-->
+            <div class="input-box">
+              <span class="details">Email</span>
+              <div class="input-password">
+                <input type="text" placeholder="Email" required formControlName="email">
+                <div class="eye-position">
+                  <i class="fa-solid fa-at"></i>
+                </div>
+              </div>
+              <div class="" style="color: red; font-size: 13px"
+                   *ngIf="email.invalid && (email.dirty || email.touched) || email.errors?.email">
+                <span *ngIf="email.errors?.email">{{email.errors?.inValidMessage}}<br></span>
+                <span *ngIf="(email.dirty || email.touched) && email.errors?.required">Bạn phải nhập email.</span>
+                <span *ngIf="(email.dirty || email.touched) && email.errors?.email">Bạn phải nhập đúng định dạng của email.</span>
+              </div>
+            </div>
+<!--            reEmail-->
+            <div class="input-box">
+              <span class="details">Nhập lại email</span>
+              <div class="input-password">
+                <input type="text" placeholder="Nhập lại email" required formControlName="reEmail">
+                <div class="eye-position">
+                  <i class="fa-solid fa-at"></i>
+                </div>
+              </div>
+              <div class="" style="color: red; font-size: 13px"
+                   *ngIf="em.invalid && (reEmail.dirty || reEmail.touched) || em.errors?.reEmail">
+                <span *ngIf="em.errors?.reEmail">{{em.errors?.inValidMessage}}<br></span>
+                <span *ngIf="(reEmail.dirty || reEmail.touched) && reEmail.errors?.required">Bạn phải xác nhận lại email.</span>
+                <span *ngIf="(reEmail.dirty || reEmail.touched) && reEmail.errors?.email">Bạn phải nhập đúng định dạng của email.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!--        gender-->
+        <div class="gender-details">
+          <input type="radio" formControlName="gender" [value]="true" name="gender" id="dot-1">
+          <input type="radio" formControlName="gender" [value]="false" name="gender" id="dot-2">
+          <span class="gender-title">Giới tính</span>
+          <div class="category">
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Nam</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Nữ</span>
+            </label>
+          </div>
+          <div class="" style="color: red; font-size: 13px"
+               *ngIf="gender.invalid && (gender.dirty || gender.touched) || gender.errors?.gender">
+            <span *ngIf="gender.errors?.gender">{{gender.errors?.inValidMessage}}</span>
+            <span *ngIf="(gender.dirty || gender.touched) && gender.errors?.required">Bạn phải chọn giới tính.</span>
+          </div>
+        </div>
+        <br>
+        <input type="checkbox" id="1" formControlName="isAgree">
+        <label for="1"> Tôi đã đọc và đồng ý theo <a href="#" data-toggle="modal" data-target="#staticBackdrop">Điều
+          khoản</a> của diễn đàn</label><br>
+        <div class="" style="color: red; font-size: 13px"
+             *ngIf="isAgree.invalid && (isAgree.dirty || isAgree.touched) || isAgree.errors?.isAgree">
+          <span *ngIf="isAgree.errors?.isAgree">{{isAgree.errors?.inValidMessage}}</span>
+          <span *ngIf="(isAgree.dirty || isAgree.touched) && isAgree.errors?.required">Bạn phải đọc và đồng ý theo Điều khoản.</span>
+        </div>
+        <div class="button">
+          <div class="input-register">
+<!--            <input type="button" [value]="['Đăng ký']" data-toggle="modal" data-target="#confirmModal">-->
+            <input type="submit" [value]="['Đăng ký']">
+            <div class="icon-register"><i class="fa-solid fa-apple-whole fa-xl"></i></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small class="modal-title" id="staticBackdropLabel ">ĐIỀU KHOẢN SỬ DỤNG</small>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body font-serat">
+          <h2 class="font-serat">ĐIỀU KHOẢN SỬ DỤNG</h2>
+          <hr>
+          Chào mừng đến với Tinder. Nếu bạn sống tại Khu vực Kinh tế Châu Âu, Vương quốc Anh, hoặc Thụy Sĩ, các
+          Điều khoản Sử dụng này được áp dụng giữa bạn và:
+          <br>
+          MTCH Technology Services Limited ("MTCH Technology") WeWork Charlemont Exchange 42 Charlemont Street
+          Dublin 2, D02 R593 Ireland
+          <br>
+          Nếu bạn sống tại Nhật Bản, các Điều khoản Sử dụng này sẽ được áp dụng giữa bạn và:
+          <br>
+          MG Japan Services GK (“MG Japan”) 4F Sumitomo Fudosan Azabu Bldg 1-4-1 Mita Minato-ku, Tokyo 108-0073
+          Nhật Bản
+          <br>
+          Nếu bạn sống bên ngoài Khu vực Kinh tế Châu Âu, Vương quốc Anh, Thụy Sĩ và Nhật Bản, các Điều khoản Sử
+          dụng này được áp dụng giữa bạn và:
+          <br>
+          Match Group, LLC ("Match Group")
+          8750 North Central Expressway, Suite 1400
+          Dallas, TX 75231, USA
+          <br>
+          Các cụm từ ("chúng tôi", "chúng ta", "Công ty" hoặc "Tinder") chỉ MTCH Technology, MG Japan hoặc Match
+          Group dựa trên quốc gia cư trú của bạn.
+          <br>
+          <br>
+
+          <h5>1. Chấp nhận Thoả thuận Điều khoản Sử dụng.</h5>
+          Bằng việc tạo tài khoản Tinder, dù thông qua thiết bị di động, ứng dụng di động hay máy tính (gọi chung
+          là “Dịch vụ”), bạn đồng ý bị ràng buộc bởi (i) các Điều khoản Sử dụng này, (ii) Chính sách Quyền riêng
+          tư, Chính sách Cookie, Thủ tục Trọng tài của chúng tôi (nếu áp dụng cho bạn), Lời khuyên An toàn và
+          Nguyên tắc Cộng đồng, mỗi nội dung này đều được đưa vào Thỏa thuận này theo hình thức tham chiếu và
+          (iii) bất kỳ điều khoản nào mà bạn tiết lộ và đồng ý nếu bạn mua các tính năng, sản phẩm hoặc dịch vụ bổ
+          sung mà chúng tôi cung cấp trên Dịch vụ (gọi chung là & "Thỏa thuận"). Nếu bạn không chấp nhận và đồng ý
+          bị ràng buộc bởi tất cả các điều khoản của Thỏa thuận này, vui lòng không sử dụng Dịch vụ.
+
+          Tùy từng thời điểm, chúng tôi có thể tiến hành các thay đổi với Thỏa thuận và Dịch vụ này. Chúng tôi có
+          thể thực hiện điều này vì nhiều lý do, bao gồm phản ánh những thay đổi hoặc yêu cầu về pháp luật, các
+          tính năng mới hoặc những thay đổi trong phương thức kinh doanh. Phiên bản mới nhất của Thỏa thuận này sẽ
+          được đăng tải trên phần Dịch vụ trong mục Cài đặt và cả trên gotinder.com, và bạn nên thường xuyên kiểm
+          tra phiên bản mới nhất. Phiên bản mới nhất chính là phiên bản được áp dụng. Nếu việc thay đổi bao gồm
+          những thay đổi trực tiếp liên quan đến thỏa thuận về quyền hoặc nghĩa vụ của bạn, chúng tôi sẽ báo trước
+          cho bạn tối thiểu 30 ngày (trừ phi chúng tôi không thể làm điều này theo luật hiện hành) bằng các cách
+          thức hợp lý. Các cách thức này có thể bao gồm thông báo qua Dịch vụ hoặc qua email. Nếu bạn vẫn tiếp tục
+          sử dụng Dịch vụ sau khi các thay đổi có hiệu lực, thì tức là bạn đồng ý với Thỏa thuận sửa đổi.
+          <br>
+          <br>
+          <h5>2. Điều kiện sử dụng.</h5>
+          Bạn không được phép tạo tài khoản hoặc truy cập hay sử dụng Dịch vụ hoặc các hệ thống có chứa Dịch vụ đó
+          trừ khi tất cả những điều sau đây đều đúng:
+
+          bạn đủ từ 18 tuổi trở lên.
+          bạn có thể tạo một hợp đồng ràng buộc với Tinder,
+          bạn không phải là người bị cấm sử dụng Dịch vụ theo luật của Hoa Kỳ hoặc bất kỳ khu vực pháp lý hiện
+          hành nào khác (ví dụ: bạn không xuất hiện trong danh sách Công dân được chỉ định đặc biệt của Bộ Tài
+          chính Hoa Kỳ hoặc phải chịu bất kỳ lệnh cấm tương tự nào khác),
+          bạn sẽ tuân thủ Thỏa thuận này và tất cả các điều luật, quy tắc và quy định hiện hành của địa phương,
+          tiểu bang, quốc gia và quốc tế, và
+          bạn chưa bao giờ bị kết án vì trọng tội hoặc phạm tội có thể bị truy tố (hoặc phạm tội ở mức độ nghiêm
+          trọng tương đương), phạm tội về tình dục, hoặc bất kỳ tội nào liên quan đến bạo lực, và bạn không bị ghi
+          danh là tội phạm ở bất kỳ hồ sơ tội phạm của bất kỳ bang nào, hồ sơ liên bang hoặc hồ sơ tội phạm tình
+          dục địa phương.
+          <br>
+          <br>
+          <h5>3. Tài khoản của bạn.</h5>
+          Để sử dụng Tinder, bạn có thể đăng nhập bằng nhiều cách, bao gồm cả đăng nhập qua Facebook. Nếu chọn sử
+          dụng Facebook của mình để đăng nhập, bạn cho phép chúng tôi truy cập và sử dụng một số thông tin nhất
+          định của tài khoản Facebook đó, bao gồm nhưng không giới hạn ở hồ sơ Facebook công khai của bạn. Để biết
+          thêm về các thông tin chúng tôi thu thập từ bạn và cách chúng tôi sử dụng các thông tin đó, vui lòng
+          tham khảo Chính sách Quyền riêng tư.
+
+          Bạn có trách nhiệm duy trì tính bảo mật của các thông tin đăng nhập của bạn mà bạn sử dụng để đăng ký
+          Tinder, và bạn tự chịu trách nhiệm cho tất cả các hoạt động xảy ra theo các thông tin này. Nếu bạn cho
+          rằng ai đó đã có quyền truy cập vào tài khoản của bạn, vui lòng liên hệ ngay với chúng tôi.
+          <br>
+          <br>
+          <h5>4. Sửa đổi dịch vụ và ngừng sử dụng.</h5>
+          Tinder luôn nỗ lực để cải tiến Dịch vụ và mang đến cho bạn chức năng bổ sung mà bạn sẽ thấy hấp dẫn và
+          hữu ích. Điều này có nghĩa là chúng tôi có thể thêm các tính năng hoặc cải tiến sản phẩm mới tùy từng
+          thời điểm cũng như loại bỏ một số tính năng và nếu các hành động này không ảnh hưởng một cách thiết yếu
+          đến các quyền hoặc nghĩa vụ của bạn, chúng tôi có thể không thông báo cho bạn biết trước khi thực hiện.
+          Chúng tôi thậm chí có thể đình chỉ Dịch vụ hoàn toàn, trong trường hợp đó, chúng tôi sẽ thông báo cho
+          bạn biết trước trừ khi các tình huống giảm nhẹ, chẳng hạn như các lo ngại về an toàn hoặc an ninh, ngăn
+          cản chúng tôi làm như vậy.
+
+          Bạn có thể hủy tài khoản của mình bất kỳ lúc nào, vì bất kỳ lý do gì, bằng cách làm theo các hướng dẫn
+          trong mục "Cài đặt" của Dịch vụ. Tuy nhiên, nếu bạn sử dụng tài khoản thanh toán của bên thứ ba, như App
+          Store hoặc iTunes Store của Apple, tùy trường hợp (“App Store”) hoặc Cửa hàng Google Play, bạn sẽ cần
+          quản lý việc thanh toán qua tài khoản tương ứng để tránh phải thanh toán thêm. Tinder có thể hủy tài
+          khoản của bạn bất kỳ lúc nào mà không cần thông báo nếu biết rằng bạn đã vi phạm Thỏa thuận này. Sau khi
+          chấm dứt như vậy, bạn sẽ không được quyền nhận bất kỳ khoản hoàn lại nào cho các giao dịch.
+
+          Đối với cư dân Hàn Quốc, ngoại trừ trường hợp chúng tôi cho rằng (i) pháp luật cấm đưa ra thông báo (như
+          khi việc đưa ra thông báo sẽ gây ra vi phạm pháp luật, quy định hiện hành hoặc chỉ thị từ các cơ quan
+          chức năng hoặc làm tổn hại đến một cuộc điều tra đang diễn ra do cơ quan chức năng thực hiện) hoặc (ii)
+          bất kỳ thông báo nào có thể gây hại cho bạn, các bên thứ ba, Tinder và/hoặc các chi nhánh của chúng tôi
+          (như khi việc đưa ra thông báo làm tổn hại đến tính bảo mật của Dịch vụ), chúng tôi sẽ thông báo cho bạn
+          về lý do thực hiện bước có liên quan ngay lập tức.
+
+          Sau khi tài khoản của bạn bị chấm dứt, Thỏa thuận này sẽ chấm dứt, ngoại trừ các quy định sau đây vẫn sẽ
+          áp dụng cho bạn và Tinder: Mục 4, Mục 5 và Mục 12 đến 19.
+          <br>
+          <br>
+          <h5>5. An toàn tương tác của bạn với thành viên khác.</h5>
+          Mặc dù Tinder cố gắng khuyến khích trải nghiệm tôn trọng thành viên thông qua các tính năng như chọn
+          tham gia kép cho phép các thành viên chỉ giao tiếp sau khi cả hai đều thể hiện sự quan tâm đến nhau,
+          Tinder không chịu trách nhiệm về hành vi của bất kỳ thành viên nào trong hoặc ngoài Dịch vụ. Bạn đồng ý
+          rằng sẽ cẩn trọng trong mọi hoạt động tương tác với các thành viên khác, nhất là khi bạn quyết định giao
+          tiếp bên ngoài Dịch vụ hoặc gặp gỡ trực tiếp. Ngoài ra, bạn đồng ý xem xét và làm theo các Lời khuyên An
+          toàn của Tinder trước khi sử dụng Dịch vụ. Bạn đồng ý rằng bạn sẽ không cung cấp thông tin tài chính của
+          mình (ví dụ: thông tin thẻ tín dụng hoặc tài khoản ngân hàng của bạn), hoặc chuyển khoản hoặc gửi tiền
+          cho các thành viên khác.
+
+          BẠN TỰ CHỊU TRÁCH NHIỆM VỀ CÁC TƯƠNG TÁC CỦA MÌNH VỚI CÁC THÀNH VIÊN KHÁC. BẠN HIỂU RẰNG TINDER KHÔNG
+          TIẾN HÀNH KIỂM TRA HỒ SƠ TƯ PHÁP HAY TRA CỨU LÝ LỊCH CÁC THÀNH VIÊN CỦA MÌNH. TINDER KHÔNG ĐƯA RA TUYÊN
+          BỐ HOẶC BẢO ĐẢM NÀO VỀ VIỆC HÀNH XỬ HOẶC TÍNH PHÙ HỢP CỦA CÁC THÀNH VIÊN.
+          <br>
+          <br>
+          <h5>6. Các 1uyền Tinder cấp cho bạn.</h5>
+          Tinder cấp cho bạn một giấy phép mang tính cá nhân, toàn cầu, không phải trả tiền bản quyền, không thể
+          chuyển nhượng, không độc quyền, có thể thu hồi, và không thể cấp phép phụ để truy cập và sử dụng Dịch
+          vụ. Giấy phép này chỉ nhằm mục đích cho phép bạn sử dụng và hưởng các quyền lợi của Dịch vụ theo ý định
+          của Tinder và được Thỏa thuận này cho phép. Giấy phép này và mọi quyền truy cập Dịch vụ sẽ tự động bị
+          thu hồi trong trường hợp bạn thực hiện bất kỳ hành động nào sau đây:
+
+          sử dụng Dịch vụ hoặc bất kỳ nội dung nào có trong Dịch vụ cho bất kỳ mục đích thương mại nào mà không có
+          sự đồng ý bằng văn bản của chúng tôi.
+          sao chép, sửa đổi, truyền tải, tạo ra bất kỳ tác phẩm phái sinh nào, tận dụng, hoặc sao chụp bằng bất kỳ
+          cách nào đối với bất kỳ các tài liệu, hình ảnh, nhãn hiệu, tên thương mại, nhãn hiệu dịch vụ có bản
+          quyền, hoặc tài sản trí tuệ, nội dung hoặc thông tin độc quyền khác có thể truy cập thông qua Dịch vụ mà
+          không có sự đồng ý trước bằng văn bản của Tinder.
+          diễn đạt hoặc ngụ ý rằng bất kỳ tuyên bố nào mà bạn thực hiện là được xác nhận bởi Tinder.
+          sử dụng robot, bot, nhện, trình thu thập dữ liệu, trình quét, ứng dụng tìm kiếm/truy xuất trang web,
+          proxy hoặc thiết bị tự động hoặc thủ công khác, phương pháp hoặc quy trình để truy cập, truy xuất, lập
+          chỉ mục, "khai thác dữ liệu" hoặc dùng bất kỳ phương thức nào sao chép hoặc phá vỡ cấu trúc điều hướng
+          hoặc cách trình bày Dịch vụ hoặc nội dung của Dịch vụ.
+          sử dụng Dịch vụ theo bất kỳ cách nào có thể gây trở ngại, phá hoại hoặc ảnh hưởng xấu đến Dịch vụ hoặc
+          các máy chủ hay mạng kết nối với Dịch vụ.
+          tải lên virus hay mã độc hại khác hoặc xâm phạm tính bảo mật của Dịch vụ.
+          giả mạo các tiêu đề hoặc thao túng các ký hiệu nhận dạng nhằm che giấu nguồn gốc của bất kỳ thông tin
+          nào được truyền đến hoặc thông qua Dịch vụ.
+          "làm giả" hoặc "sao chép" bất kỳ phần nào của Dịch vụ mà không có sự cho phép trước bằng văn bản của
+          Tinder.
+          sử dụng thẻ meta hoặc mã hoặc các thiết bị khác có chứa bất kỳ tham chiếu nào đến Tinder hoặc Dịch vụ
+          (hay bất kỳ nhãn hiệu, tên thương mại, nhãn hiệu dịch vụ, biểu trưng hoặc khẩu hiệu của Tinder) để
+          chuyển hướng bất kỳ người nào đến bất kỳ trang web nào khác vì bất cứ mục đích nào.
+          sửa đổi, điều chỉnh, cấp phép lại, dịch, bán, thiết kế đối chiếu, giải mã, dịch ngược hoặc tháo rời bất
+          kỳ phần nào của Dịch vụ hoặc xúi giục người khác làm như vậy.
+          sử dụng hoặc phát triển bất kỳ ứng dụng nào của bên thứ ba có chức năng tương tác với Dịch vụ hoặc Nội
+          dung hay thông tin của thành viên khác mà không có sự đồng ý bằng văn bản của chúng tôi.
+          sử dụng, truy cập, hoặc xuất bản giao diện lập trình ứng dụng Tinder mà không có sự đồng ý bằng văn bản
+          của chúng tôi.
+          thăm dò, quét hoặc kiểm tra lỗ hổng Dịch vụ hoặc bất kỳ hệ thống hay mạng nào của chúng tôi.
+          khuyến khích hoặc quảng bá bất kỳ hoạt động nào vi phạm Thỏa thuận này.
+          Tinder có thể điều tra và thực hiện bất kỳ hành động pháp lý khả thi nào để đối phó với việc sử dụng
+          Dịch vụ bất hợp pháp hoặc không được cấp phép, bao gồm cả việc hủy tài khoản của bạn.
+
+          Bất kỳ phần mềm nào mà chúng tôi cung cấp, bạn có thể tự động tải xuống và cài đặt các bản nâng cấp, cập
+          nhật hoặc các tính năng mới khác. Bạn có thể điều chỉnh các lượt tải xuống tự động này thông qua cài đặt
+          của thiết bị của bạn.
+          <br>
+          <br>
+          <h5>7. Các quyền bạn cấp cho Tinder.</h5>
+          Bằng việc tạo tài khoản, bạn trao cho Tinder quyền và bản quyền toàn cầu, có thể chuyển nhượng, có thể
+          cấp phép lại, miễn phí bản quyền để tổ chức, lưu trữ, sử dụng, sao chép, hiển thị, tái lập, điều chỉnh,
+          chỉnh sửa, công bố, sửa đổi và phân phối thông tin mà bạn cho phép chúng tôi truy cập từ các bên thứ ba
+          như Facebook, cũng như bất kỳ thông tin nào bạn đăng, tải lên, hiển thị hoặc bằng một cách nào đó cung
+          cấp (gọi chung là "đăng tải") trên Dịch vụ hoặc truyền cho các thành viên khác (gọi chung là "Nội
+          dung"). Bản quyền của Tinder đối với Nội dung của bạn sẽ thuộc diện không độc quyền, ngoại trừ việc bản
+          quyền của Tinder sẽ là độc quyền đối với các tác phẩm phái sinh được tạo ra thông qua việc sử dụng Dịch
+          vụ. Ví dụ: Tinder sẽ sở hữu bản quyền độc quyền đối với ảnh chụp màn hình của Dịch vụ chứa Nội dung của
+          bạn. Ngoài ra, để Tinder có thể ngăn chặn việc sử dụng Nội dung của bạn bên ngoài Dịch vụ, bạn cho phép
+          Tinder hành động thay mặt bạn đối với việc sử dụng mang tính vi phạm Nội dung của bạn mà các thành viên
+          khác hoặc bên thứ ba lấy từ Dịch vụ. Điều này được làm rõ rằng bao gồm thẩm quyền, nhưng không phải
+          nghĩa vụ, gửi thông báo theo 17 U.S.C. § 512 (c) (3) (tức Thông báo gỡ xuống theo DMCA) thay mặt bạn nếu
+          Nội dung của bạn bị các bên thứ ba bên ngoài Dịch vụ lấy và sử dụng. Bản quyền của chúng tôi đối với Nội
+          dung của bạn sẽ tuân theo các quyền của bạn theo luật hiện hành (ví dụ: luật liên quan đến bảo vệ dữ
+          liệu cá nhân trong phạm vi bất kỳ Nội dung nào chứa thông tin cá nhân theo định nghĩa của các luật đó)
+          và dành cho mục đích hạn chế là vận hành, phát triển, cung cấp và cải tiến Dịch vụ cũng như nghiên cứu
+          phát triển những nội dung mới. Bạn đồng ý rằng bất kỳ Nội dung nào bạn đặt hoặc bạn cho phép chúng tôi
+          đặt trên Dịch vụ đều có thể được các thành viên khác xem và có thể được xem bởi bất kỳ người nào truy
+          cập hoặc tham gia vào Dịch vụ (chẳng hạn như các cá nhân có thể nhận được Nội dung được chia sẻ từ các
+          thành viên Tinder khác).
+
+          Bạn đồng ý rằng tất cả thông tin bạn gửi khi tạo tài khoản, bao gồm thông tin được gửi từ tài khoản
+          Facebook của bạn, là chính xác và trung thực và bạn có quyền đăng tải Nội dung trên Dịch vụ và cấp phép
+          cho Tinder nói trên.
+
+          Bạn hiểu và đồng ý rằng chúng tôi có thể giám sát hoặc xem xét bất kỳ Nội dung nào mà bạn đăng như là
+          một phần của Dịch vụ. Chúng tôi có thể xóa bất kỳ Nội dung nào, dù toàn bộ hay một phần, mà theo quyết
+          định riêng của chúng tôi là vi phạm Thỏa thuận này hoặc có thể gây hại cho danh tiếng của Dịch vụ.
+
+          Khi giao tiếp với đại diện chăm sóc khách hàng của chúng tôi, bạn đồng ý cư xử một cách tôn trọng và tử
+          tế. Nếu chúng tôi cảm thấy hành vi của bạn đối với bất kỳ đại diện chăm sóc khách hàng nào của chúng tôi
+          hoặc nhân viên khác là mang tính chất đe dọa, quấy rối hoặc xúc phạm, vào bất cứ lúc nào, chúng tôi có
+          quyền chấm dứt tài khoản của bạn ngay lập tức.
+
+          Xét đến việc Tinder cho phép bạn sử dụng Dịch vụ, bạn đồng ý rằng chúng tôi, các chi nhánh của chúng
+          tôi, và các đối tác bên thứ ba của chúng tôi có thể đặt quảng cáo trên Dịch vụ. Bằng cách gửi các đề
+          xuất hoặc phản hồi đến Tinder về Dịch vụ của chúng tôi, bạn đồng ý rằng Tinder có thể sử dụng và chia sẻ
+          thông tin phản hồi đó cho bất kỳ mục đích nào mà không phải bồi thường cho bạn.
+
+          Xin lưu ý rằng Tinder có thể truy cập, lưu trữ và công bố thông tin và Nội dung tài khoản của bạn nếu
+          pháp luật yêu cầu, bằng cách thực hiện thỏa thuận của công ty với bạn hoặc khi tin chắc rằng việc truy
+          cập, lưu trữ hoặc công bố đó thỏa mãn lợi ích hợp pháp, bao gồm để: (i) tuân thủ quy trình pháp lý; (ii)
+          thi hành Thỏa thuận; (iii) phản hồi các khiếu nại rằng bất cứ Nội dung nào vi phạm quyền của bên thứ ba;
+          (iv) đáp ứng yêu cầu bạn gửi đến dịch vụ khách hàng; hoặc (v) bảo vệ quyền, tài sản hoặc an toàn cá nhân
+          của Công ty hoặc bất kỳ người nào khác.
+          <br>
+          <br>
+          <h5>8. Quy tắc Cộng đồng.</h5>
+          Bằng việc sử dụng Dịch vụ, bạn đồng ý rằng bạn sẽ không:
+
+          sử dụng Dịch vụ cho bất kỳ mục đích nào bất hợp pháp hoặc bị cấm bởi Thỏa thuận này.
+          sử dụng Dịch vụ cho bất kỳ mục đích gây hại hoặc bất chính nào
+          sử dụng Dịch vụ nhằm gây thiệt hại cho Tinder
+          vi phạm Hướng dẫn về Cộng đồng của chúng tôi, như được cập nhật tùy từng thời điểm.
+          spam, gạ tiền hoặc lừa đảo bất kỳ thành viên nào.
+          giả mạo bất kỳ cá nhân hoặc tổ chức nào hoặc đăng bất kỳ hình ảnh nào của người khác mà không có sự cho
+          phép của họ.
+          bắt nạt, "lén theo dõi", đe dọa, tấn công, quấy rối, ngược đãi hoặc phỉ báng bất kỳ ai.
+          đăng bất kỳ Nội dung nào vi phạm hoặc xâm phạm quyền của bất kỳ ai, bao gồm quyền công khai, quyền riêng
+          tư, bản quyền, nhãn hiệu hoặc quyền sở hữu trí tuệ hoặc quyền theo hợp đồng khác.
+          đăng tải bất kỳ Nội dung nào có ngôn từ thù địch, mang tính đe dọa, có nội dung khiêu dâm
+          đăng tải bất kỳ Nội dung nào có tính chất kích động bạo lực; hoặc chứa ảnh khỏa thân hoặc hình ảnh hoặc
+          minh họa bạo lực.
+          đăng tải bất kỳ Nội dung nào khuyến khích phân biệt chủng tộc, khinh miệt tín ngưỡng, hận thù hoặc gây
+          hại thể chất tồn tại dưới bất kỳ hình thức nào đối với bất kỳ nhóm hoặc cá nhân nào.
+          gạ gẫm lấy mật khẩu vì bất kỳ mục đích nào hoặc thông tin nhận dạng cá nhân vì mục đích thương mại hoặc
+          bất hợp pháp từ các thành viên khác hoặc phổ biến thông tin cá nhân của người khác mà không được sự cho
+          phép của người đó.
+          sử dụng tài khoản của thành viên khác, chia sẻ tài khoản với thành viên khác hoặc duy trì nhiều tài
+          khoản.
+          tạo một tài khoản khác nếu chúng tôi đã chấm dứt tài khoản của bạn, trừ khi bạn có sự cho phép của chúng
+          tôi.
+          Tinder bảo lưu quyền điều tra và/hoặc hủy tài khoản của bạn mà không cần hoàn tiền cho bất kỳ giao dịch
+          nào nếu bạn vi phạm Thỏa thuận này, sử dụng sai mục đích của Dịch vụ hoặc hành xử theo cách mà Tinder
+          coi là không phù hợp hoặc bất hợp pháp, bao gồm các hành động hoặc hội thoại xảy ra trong hoặc ngoài
+          dịch vụ. Ngoài ra, trong một số trường hợp nhất định, chúng tôi có thể hủy tài khoản của bạn vì vi phạm
+          các điều khoản hiện hành của bất kỳ doanh nghiệp nào thuộc Match Group, bên cạnh Tinder, các dịch vụ như
+          OkCupid, Plenty of Fish, Match, Meetic, BlackPeopleMeet, LoveScout24, OurTime, Pairs, ParPerfeito và
+          Twoo (để biết thêm chi tiết, bấm vào đây). Trong trường hợp bạn vi phạm các quy tắc này hoặc Quy tắc
+          Cộng đồng của chúng tôi, quyền sử dụng Dịch vụ của bạn sẽ tự động bị thu hồi.
+          <br>
+          <br>
+          <h5>9. Nội dung của các Thành Viên Khác.</h5>
+          Mặc dù Tinder có quyền xem xét và xóa Nội dung vi phạm Thỏa thuận này, Nội dung đó là trách nhiệm riêng
+          của thành viên đăng nó và Tinder không thể đảm bảo rằng tất cả Nội dung sẽ tuân thủ Thỏa thuận này. Nếu
+          bạn thấy Nội dung trên Dịch vụ vi phạm Thỏa thuận này, vui lòng báo cáo nội dung đó ngay trong Dịch vụ
+          hoặc qua biểu mẫu liên hệ của chúng tôi.
+          <br>
+          <br>
+          <h5>10. Mua hàng.</h5>
+          Khái quát. Đôi khi, Tinder có thể cung cấp các sản phẩm và dịch vụ để mua ("mua hàng trong ứng dụng")
+          thông qua App Store, Cửa hàng Google Play, thanh toán qua nhà cung cấp dịch vụ, thanh toán trực tiếp cho
+          Tinder hoặc các nền tảng thanh toán khác được Tinder ủy quyền. Nếu bạn chọn mua hàng trong ứng dụng, bạn
+          sẽ được nhắc xác nhận việc mua hàng của mình với nhà cung cấp dịch vụ thanh toán tương ứng và phương
+          thức thanh toán của bạn (có thể là thẻ của bạn hoặc tài khoản bên thứ ba như Cửa hàng Google Play hoặc
+          App Store (gọi chung là "Phương thức thanh toán"), sẽ được tính cho việc mua hàng trong ứng dụng theo
+          mức giá hiển thị cho bạn đối với (các) dịch vụ bạn đã chọn cùng các chương trình giảm giá hoặc thuế có
+          thể áp dụng cho các khoản thanh toán của bạn, và bạn ủy quyền cho Tinder hoặc tài khoản của bên thứ ba,
+          tùy trường hợp, để tính phí bạn.
+
+          Gia hạn tự động; Thanh toán thẻ tự động
+
+          Nếu bạn mua đăng ký tự động gia hạn định kỳ thông qua thao tác mua hàng trong ứng dụng, Phương thức
+          thanh toán của bạn sẽ tiếp tục được sử dụng để đăng ký cho đến khi bạn hủy. Sau khoảng thời gian cam kết
+          đăng ký ban đầu của bạn, và sau bất kỳ thời gian đăng ký tiếp theo nào, gói đăng ký của bạn sẽ tự động
+          tiếp tục trong khoảng thời gian tương đương, với mức giá bạn đồng ý khi đăng ký. Thông tin thanh toán
+          thẻ của bạn sẽ được lưu trữ và sau đó được sử dụng cho thanh toán thẻ tự động theo Thỏa thuận.
+
+          Việc phản đối một khoản thanh toán đã được thực hiện phải được chuyển đến bộ phận Hỗ trợ Khách hàng nếu
+          bạn được Tinder hoặc tài khoản bên thứ ba có liên quan lập hóa đơn trực tiếp, chẳng hạn như App Store.
+          Bạn cũng có thể phản đối bằng cách liên hệ với ngân hàng hoặc nhà cung cấp dịch vụ thanh toán của mình,
+          họ có thể cung cấp thêm thông tin về quyền của bạn cũng như các giới hạn thời gian áp dụng. Bạn có thể
+          rút lại vô điều kiện sự đồng ý của mình đối với thao tác thanh toán thẻ tự động bất kỳ lúc nào bằng cách
+          đi tới Cài đặt trên Tinder hoặc tài khoản của bên thứ ba có liên quan, nhưng hãy lưu ý rằng bạn vẫn có
+          nghĩa vụ thanh toán mọi khoản tiền chưa thanh toán.
+
+          Nếu muốn thay đổi hoặc chấm dứt đăng ký của mình, bạn sẽ cần đăng nhập vào tài khoản bên thứ ba của mình
+          (hoặc Cài đặt trên Tinder, nếu có) và làm theo hướng dẫn để chấm dứt hoặc hủy đăng ký, ngay cả khi bạn
+          đã xóa tài khoản với chúng tôi hoặc đã xóa ứng dụng Tinder khỏi thiết bị của mình. Việc xóa tài khoản
+          của bạn trên Tinder hoặc xóa ứng dụng Tinder khỏi thiết bị của bạn không chấm dứt hoặc hủy đăng ký của
+          bạn; Tinder sẽ giữ lại tất cả các khoản tiền được tính vào Phương thức Thanh toán của bạn cho đến khi
+          bạn chấm dứt hoặc hủy đăng ký của mình trên Tinder hoặc tài khoản của bên thứ ba, nếu có. Nếu bạn chấm
+          dứt hoặc hủy đăng ký của mình, bạn có thể sử dụng đăng ký của mình cho đến khi kết thúc thời hạn đăng ký
+          hiện tại khi đó và đăng ký của bạn sẽ không được gia hạn sau khi kỳ hạn hiện tại của bạn kết thúc.
+
+          Điều khoản bổ sung được áp dụng nếu bạn thanh toán trực tiếp với Tinder bằng Phương thức thanh toán của
+          mình. Nếu bạn thanh toán trực tiếp cho Tinder, Tinder có thể sửa bất kỳ lỗi thanh toán hóa đơn hoặc sai
+          sót nào mà trang này gây ra ngay cả sau khi đã yêu cầu hoặc nhận thanh toán. Nếu bạn thực hiện khoản bồi
+          hoàn hoặc hủy giao dịch thanh toán được thực hiện bằng Phương thức thanh toán của mình, Tinder có thể tự
+          ý chấm dứt tài khoản của bạn ngay lập tức.
+
+          Bạn có thể chỉnh sửa thông tin Phương thức thanh toán của mình bằng cách truy cập Tinder và vào mục Cài
+          đặt. Nếu khoản thanh toán không được thực hiện thành công, do hết hạn, không đủ tiền hoặc các lý do
+          khác, và bạn không chỉnh sửa thông tin Phương thức Thanh toán, chấm dứt hoặc hủy đăng ký của mình, bạn
+          vẫn phải chịu trách nhiệm đối với mọi khoản tiền chưa nộp và ủy quyền cho chúng tôi tiếp tục xuất hóa
+          đơn theo Phương thức Thanh toán (có thể được cập nhật). Điều này có thể dẫn đến việc thay đổi ngày thanh
+          toán của bạn. Ngoài ra, bạn cho phép chúng tôi được cập nhật hoặc thay thế ngày hết hạn và số thẻ tín
+          dụng hoặc thẻ ghi nợ do tổ chức phát hành thẻ tín dụng hoặc thẻ ghi nợ của bạn cung cấp. Các điều khoản
+          thanh toán của bạn sẽ dựa trên Phương thức thanh toán của bạn và có thể được xác định theo thỏa thuận
+          giữa bạn và tổ chức tài chính, tổ chức phát hành thẻ tín dụng hoặc nhà cung cấp khác của Phương thức
+          thanh toán bạn đã chọn. Nếu cư trú bên ngoài Châu Mỹ, bạn đồng ý rằng khoản thanh toán của bạn cho
+          Tinder sẽ được thực hiện thông qua Công ty TNHH MTCH Technology Services.
+
+          Vật Phẩm Ảo. Đôi khi, bạn có thể mua hoặc kiếm được bản quyền có giới hạn, cá nhân, không thể chuyển
+          nhượng, không thể cấp phép lại, có thể thu hồi để sử dụng "vật phẩm ảo" - có thể bao gồm các sản phẩm ảo
+          hoặc “tiền” ảo hoặc các đơn vị khác có thể trao đổi trong Dịch vụ để lấy các sản phẩm ảo (gọi chung là
+          "Vật Phẩm Ảo"). Mọi số dư Vật Phẩm Ảo hiển thị trong tài khoản của bạn đều không tạo thành số dư trong
+          thế giới thực hoặc phản ánh bất kỳ giá trị được lưu trữ nào, mà thay vào đó, sẽ tạo thành một phép đo
+          mức độ bản quyền của bạn. Bạn sẽ không phải trả phí cho Vật Phẩm Ảo khi không sử dụng, tuy nhiên, bản
+          quyền cấp cho bạn trong Vật Phẩm Ảo sẽ chấm dứt theo các điều khoản của Thỏa thuận này, khi Tinder ngừng
+          cung cấp Dịch vụ hoặc tài khoản của bạn bị đóng hoặc chấm dứt theo cách khác. Tinder, theo quyết định
+          riêng của mình, có quyền tính phí cho quyền truy cập hoặc sử dụng Vật Phẩm Ảo và có thể phân phối Vật
+          Phẩm Ảo có hoặc không tính phí. Tinder có thể quản lý, điều chỉnh, kiểm soát, sửa đổi hoặc loại bỏ Vật
+          Phẩm Ảo bất cứ lúc nào. Tinder sẽ không chịu trách nhiệm pháp lý đối với bạn hoặc bất kỳ bên thứ ba nào
+          trong trường hợp Tinder thực hiện bất kỳ quyền nào nêu trên. Chỉ có thể đổi Vật Phẩm Ảo qua Dịch vụ. TẤT
+          CẢ GIAO DỊCH MUA VÀ MUA LẠI VẬT PHẨM ẢO ĐƯỢC THỰC HIỆN THÔNG QUA DỊCH VỤ ĐỀU LÀ CUỐI CÙNG VÀ KHÔNG THỂ
+          HOÀN LẠI. Việc cung cấp các Vật Phẩm Ảo để sử dụng trong Dịch vụ là một dịch vụ bắt đầu ngay lập tức khi
+          bạn chấp nhận mua các Vật Phẩm Ảo đó. BẠN XÁC NHẬN RẰNG TINDER KHÔNG BẮT BUỘC PHẢI CUNG CẤP TIỀN HOÀN
+          TRẢ LIÊN QUAN ĐẾN CÁC VẬT PHẨM ẢO VÌ BẤT KỲ LÝ DO NÀO VÀ RẰNG BẠN SẼ KHÔNG NHẬN ĐƯỢC TIỀN HOẶC KHOẢN BỒI
+          THƯỜNG KHÁC CHO CÁC VẬT PHẨM ẢO CHƯA SỬ DỤNG KHI MỘT TÀI KHOẢN BỊ ĐÓNG, DÙ VIỆC ĐÓNG TÀI KHOẢN NÀY LÀ TỰ
+          NGUYỆN HAY KHÔNG TỰ NGUYỆN.
+
+          Hoàn tiền. Nhìn chung, tất cả chi phí mua hàng sẽ không được hoàn lại, và bạn sẽ không được hoàn lại
+          hoặc ghi có cho khoảng thời gian đã sử dụng một phần. Chúng tôi có thể chấp nhận một ngoại lệ nếu là yêu
+          cầu hoàn tiền dành cho gói đăng ký được đưa ra trong vòng mười bốn ngày kể từ ngày giao dịch, hoặc nếu
+          pháp luật hiện hành trong khu vực pháp lý của bạn cho phép hoàn lại tiền.
+
+          Đối với những người đăng ký cư trú ở Liên minh Châu Âu hoặc Khu vực Kinh tế Châu Âu, theo luật địa
+          phương, bạn có quyền được hoàn toàn bộ tiền mà không cần nêu lý do trong vòng 14 ngày sau khi bắt đầu
+          đăng ký. Xin lưu ý rằng khoảng thời gian 14 ngày này bắt đầu ngay khi đăng ký bắt đầu.
+
+          Đối với người đăng ký và người mua Vật phẩm ảo cư trú tại Hàn Quốc, theo luật địa phương, bạn có quyền
+          được hoàn toàn bộ tiền đăng ký và/hoặc tiền mua Vật phẩm ảo chưa sử dụng của mình trong vòng 7 ngày sau
+          khi mua. Xin lưu ý rằng khoảng thời gian 7 ngày này bắt đầu ngay sau khi mua hàng.
+
+          Ngoại trừ trường hợp như đã lưu ý ở trên đối với các thành viên cư trú tại Hàn Quốc, các giao dịch mua
+          Vật Phẩm Ảo là CUỐI CÙNG VÀ KHÔNG ĐƯỢC HOÀN LẠI.
+
+          Để yêu cầu trả lại tiền:
+
+          Nếu bạn mua hàng bằng Apple ID của mình, thì việc hoàn lại tiền sẽ do Apple xử lý, không phải Tinder. Để
+          yêu cầu hoàn lại tiền, hãy truy cập App Store, bấm vào Apple ID của bạn, chọn "Lịch sử mua hàng", tìm
+          giao dịch và bấm "Báo cáo sự cố". Bạn cũng có thể gửi yêu cầu tại https://getsupport.apple.com.
+
+          Nếu bạn mua hàng bằng tài khoản Cửa hàng Google Play của mình hoặc trực tiếp qua Tinder: vui lòng liên
+          hệ với bộ phận hỗ trợ khách hàng và cung cấp mã đơn hàng của bạn cho Cửa hàng Google Play (bạn có thể
+          tìm thấy mã đơn hàng trong email xác nhận đơn đặt hàng hoặc bằng cách đăng nhập vào Google Wallet) hoặc
+          Tinder (bạn có thể tìm thấy nội dung này trong email xác nhận của mình). Bạn cũng có thể gửi thư hoặc
+          gửi một thông báo có chữ ký và ghi ngày tháng, trong đó nêu rõ rằng bạn, tức người mua, đang hủy bỏ thỏa
+          thuận này hoặc các từ ngữ có hiệu lực tương tự khác. Đồng thời, vui lòng ghi rõ địa chỉ email hoặc số
+          điện thoại di động được liên kết với tài khoản của bạn kèm theo mã đơn hàng của bạn trong thư này. Thông
+          báo này sẽ được gửi tới: Tinder, Attn: Cancellations, P.O. Box 25472, Dallas, Texas 75225, Hoa Kỳ.
+
+          Nếu bạn sử dụng quyền hủy (ngoại trừ các giao dịch mua được thực hiện thông qua Apple ID do Apple kiểm
+          soát), chúng tôi sẽ hoàn lại (hoặc yêu cầu Google hoàn lại) tất cả các khoản thanh toán nhận được từ
+          bạn, không chậm trễ và trong mọi trường hợp không vượt quá 14 ngày kể từ khi chúng tôi nhận được thông
+          báo về quyết định hủy Thỏa thuận của bạn. Chúng tôi sẽ thực hiện việc hoàn trả này bằng cách sử dụng
+          cùng một phương tiện thanh toán như bạn đã sử dụng trong giao dịch ban đầu. Trong mọi trường hợp, bạn sẽ
+          không phải chịu bất kỳ chi phí nào do việc hoàn trả.
+
+          Nếu bạn đã mua hàng thông qua một nền tảng thanh toán không được liệt kê ở trên, vui lòng yêu cầu hoàn
+          tiền trực tiếp từ người bán bên thứ ba, tức người mà bạn đã thông qua để thực hiện giao dịch mua của
+          mình.
+
+          Bạn không thể hủy đơn đặt hàng nội dung kỹ thuật số không được phân phối trên phương tiện thực tế nếu
+          quá trình xử lý đơn hàng đã bắt đầu với sự đồng ý và xác nhận trước đó rằng bạn sẽ mất quyền hủy bỏ.
+          Điều này áp dụng, ví dụ, đối với việc mua Vật Phẩm Ảo. Điều đó có nghĩa là các giao dịch mua đó là QUYẾT
+          ĐỊNH CUỐI CÙNG VÀ KHÔNG ĐƯỢC HOÀN LẠI.
+
+          Định giá. Tinder hoạt động kinh doanh trên toàn cầu và hoạt động định giá của chúng tôi thay đổi dựa
+          trên một số yếu tố. Chúng tôi thường xuyên đưa ra mức giá khuyến mại. Mức này có thể thay đổi tùy theo
+          khu vực, thời lượng đăng ký, kích thước gói và nhiều nhân tố khác. Chúng tôi cũng thường xuyên thử
+          nghiệm các tính năng và các tùy chọn thanh toán mới.
+          <br>
+          <br>
+          <h5>11. Thông báo và Thủ tục để đưa ra Tuyên bố Vi phạm Bản quyền.</h5>
+          Nếu bạn cho rằng tác phẩm của mình đã bị sao chép và đăng tải trên Dịch vụ theo cách cấu thành hành vi
+          vi phạm bản quyền, vui lòng gửi yêu cầu gỡ xuống theo biểu mẫu tại đây
+
+          Nếu bạn liên hệ với chúng tôi về việc cáo buộc vi phạm bản quyền, vui lòng đảm bảo cung cấp các thông
+          tin sau:
+
+          chữ ký điện tử hoặc vật lý của người có thẩm quyền để hành động thay mặt cho chủ sở hữu bản quyền;
+          mô tả về tác phẩm có bản quyền mà bạn cho rằng đã bị vi phạm;
+          mô tả nơi mà bạn cho rằng tài liệu vi phạm đang nằm trên Dịch vụ (và mô tả đó phải đủ hợp lý để cho phép
+          chúng tôi tìm ra tài liệu bị cáo buộc là vi phạm);
+          thông tin liên hệ của bạn, bao gồm địa chỉ, số điện thoại, địa chỉ email và danh tính của chủ sở hữu bản
+          quyền;
+          một tuyên bố bằng văn bản của bạn rằng bạn tin tưởng rằng việc tranh chấp sử dụng không được chủ sở hữu
+          bản quyền, người đại diện, hoặc pháp luật cho phép; và
+          một tuyên bố của bạn, dưới hình thức bị phạt nếu khai man, rằng thông tin nói trên trong thông báo của
+          bạn là chính xác và bạn là chủ sở hữu bản quyền hoặc được ủy quyền để hành động thay mặt cho chủ sở hữu
+          bản quyền.
+          Tinder sẽ chấm dứt tài khoản của người tái phạm.
+          <br>
+          <br>
+          <h5>12. Tuyên bố Miễn trừ trách nhiệm</h5>
+          TINDER CUNG CẤP DỊCH VỤ TRÊN CƠ SỞ “GIỮ NGUYÊN TRẠNG” VÀ “NHƯ HIỆN CÓ” VÀ TRONG PHẠM VI CHO PHÉP CỦA
+          PHÁP LUẬT HIỆN HÀNH, KHÔNG CUNG CẤP BẢO HÀNH THEO BẤT KỲ HÌNH THỨC NÀO, DÙ RÕ RÀNG, NGỤ Ý, THEO PHÁP
+          ĐỊNH HOẶC BẰNG CÁCH NÀO KHÁC LIÊN QUAN ĐẾN DỊCH VỤ (BAO GỒM TẤT CẢ NỘI DUNG TRONG ĐÓ), BAO GỒM NHƯNG
+          KHÔNG GIỚI HẠN Ở BẤT KỲ BẢO ĐẢM NGỤ Ý NÀO VỀ CHẤT LƯỢNG, TÍNH THƯƠNG MẠI, TÍNH PHÙ HỢP CHO MỘT MỤC ĐÍCH
+          CỤ THỂ HOẶC SỰ KHÔNG VI PHẠM. TINDER KHÔNG CAM KẾT HOẶC ĐẢM BẢO RẰNG (A) DỊCH VỤ SẼ KHÔNG BỊ GIÁN ĐOẠN,
+          AN TOÀN HOẶC KHÔNG CÓ LỖI, (B) BẤT KỲ KHIẾM KHUYẾT HOẶC LỖI NÀO TRONG DỊCH VỤ SẼ ĐƯỢC SỬA CHỮA, HOẶC (C)
+          BẤT KỲ NỘI DUNG HOẶC THÔNG TIN NÀO BẠN CÓ ĐƯỢC TRÊN HOẶC THÔNG QUA DỊCH VỤ LÀ CHÍNH XÁC.
+
+          TINDER KHÔNG CHỊU TRÁCH NHIỆM ĐỐI VỚI BẤT KỲ NỘI DUNG NÀO MÀ BẠN HOẶC NGƯỜI DÙNG KHÁC HOẶC BÊN THỨ BA
+          ĐĂNG TẢI, GỬI HOẶC NHẬN THÔNG QUA DỊCH VỤ. BẤT KỲ TÀI LIỆU NÀO ĐƯỢC TẢI VỀ HOẶC LẤY ĐƯỢC THÔNG QUA VIỆC
+          SỬ DỤNG DỊCH VỤ ĐỀU ĐƯỢC TRUY CẬP THEO Ý CỦA BẠN VÀ BẠN PHẢI CHỊU MỌI RỦI RO.
+          <br>
+          <br>
+          <h5>13. Dịch vụ của Bên thứ ba.</h5>
+          Dịch vụ có thể chứa các quảng cáo và khuyến mại được cung cấp bởi các bên thứ ba và các liên kết tới các
+          trang web hoặc tài nguyên khác. Tinder không chịu trách nhiệm về tính khả dụng (hoặc không khả dụng) của
+          các trang web hoặc tài nguyên bên ngoài như vậy. Nếu bạn quyết định tương tác với các bên thứ ba được
+          tạo sẵn thông qua Dịch vụ của chúng tôi, thì các điều khoản của bên đó sẽ chi phối mối quan hệ của họ
+          với bạn. Tinder không chịu trách nhiệm hoặc có nghĩa vụ đối với các điều khoản hoặc hành động của bên
+          thứ ba.
+          <br>
+          <br>
+          <h5>14. Giới hạn Trách nhiệm pháp lý.</h5>
+          TRONG PHẠM VI TỐI ĐA ĐƯỢC PHÁP LUẬT HIỆN HÀNH CHO PHÉP, TRONG MỌI TRƯỜNG HỢP, TINDER, CÁC CHI NHÁNH,
+          NHÂN VIÊN, NGƯỜI CẤP PHÉP HOẶC NHÀ CUNG CẤP DỊCH VỤ CỦA TINDER ĐỀU SẼ KHÔNG CHỊU TRÁCH NHIỆM PHÁP LÝ ĐỐI
+          VỚI BẤT KỲ THIỆT HẠI NÀO CÓ TÍNH GIÁN TIẾP, DO HẬU QUẢ, ĐỂ LÀM GƯƠNG, NGẪU NHIÊN, ĐẶC BIỆT, MANG TÍNH
+          TRỪNG PHẠT HOẶC TĂNG CƯỜNG, BAO GỒM NHƯNG KHÔNG GIỚI HẠN Ở CÁC TỔN THẤT VỀ LỢI NHUẬN, DÙ PHÁT SINH TRỰC
+          TIẾP HAY GIÁN TIẾP, HOẶC BẤT KỲ TỔN THẤT NÀO VỀ DỮ LIỆU, KHẢ NĂNG SỬ DỤNG, SỰ TÍN NHIỆM HOẶC CÁC TỔN
+          THẤT VÔ HÌNH KHÁC DO: (I) (I) QUYỀN TRUY CẬP CỦA BẠN VÀO HOẶC KHẢ NĂNG SỬ DỤNG HOẶC TÌNH TRẠNG KHÔNG THỂ
+          TRUY CẬP HAY SỬ DỤNG DỊCH VỤ, (II) HÀNH VI HOẶC NỘI DUNG CỦA CÁC THÀNH VIÊN KHÁC HOẶC CÁC BÊN THỨ BA
+          TRÊN, THÔNG QUA HOẶC SAU KHI SỬ DỤNG DỊCH VỤ; HOẶC (III) VIỆC TRUY CẬP TRÁI PHÉP, SỬ DỤNG HOẶC THAY ĐỔI
+          NỘI DUNG CỦA BẠN, NGAY CẢ KHI TINDER ĐÃ ĐƯỢC THÔNG BÁO VỀ KHẢ NĂNG XẢY RA NHỮNG THIỆT HẠI ĐÓ. TRONG MỌI
+          TRƯỜNG HỢP, TRÁCH NHIỆM PHÁP LÝ CHUNG CỦA TINDER VỚI BẠN ĐỐI VỚI TẤT CẢ CÁC KHIẾU NẠI LIÊN QUAN ĐẾN DỊCH
+          VỤ SẼ KHÔNG VƯỢT QUÁ SỐ TIỀN LỚN HƠN SỐ TIỀN BẠN PHẢI TRẢ CHO TINDER ĐỂ SỬ DỤNG DỊCH VỤ, NẾU CÓ, VÀ 100
+          USD TRONG THỜI GIAN BẠN CÓ TÀI KHOẢN.
+
+          MỘT SỐ KHU VỰC PHÁP LÝ KHÔNG CHO PHÉP LOẠI TRỪ HOẶC GIỚI HẠN CÁC BỒI THƯỜNG THIỆT HẠI NHẤT ĐỊNH, VÌ VẬY
+          MỘT SỐ HOẶC TẤT CẢ CÁC LOẠI TRỪ VÀ GIỚI HẠN TRONG KHOẢN NÀY CÓ THỂ KHÔNG ÁP DỤNG CHO BẠN.
+          <br>
+          <br>
+          <h5>15. Trọng tài, Miễn trừ Kiện Tập thể, và Miễn trừ Bồi thẩm đoàn.</h5>
+          Ngoại trừ thành viên cư trú trong Liên minh Châu Âu hoặc Khu vực Kinh tế Châu Âu và những nơi khác mà bị
+          pháp luật hiện hành ngăn cấm:
+
+          Các cách thức duy nhất để giải quyết bất kỳ tranh chấp hoặc khiếu nại nào phát sinh từ hoặc liên quan
+          đến Thỏa thuận này (bao gồm mọi vi phạm bị cáo buộc) hoặc Dịch vụ cần được TRỌNG TÀI RÀNG BUỘC do JAMS
+          quản lý theo Quy tắc Trọng tài & Các thủ tục hợp lý của JAMS, ngoại trừ được sửa đổi bởi Thủ tục Trọng
+          tài của chúng tôi. Một ngoại lệ đối với tính độc quyền của trọng tài là một trong hai bên có quyền đưa
+          ra khiếu nại cá nhân đối với bên kia tại một tòa án đặc biệt xử các vụ kiện nhỏ (tòa tiểu tụng) có thẩm
+          quyền tài phán, hoặc, nếu trình đơn ra trọng tài, bên phản hồi có thể yêu cầu thực hiện tiến trình giải
+          quyết tranh chấp tại tòa án như thế nếu khiếu nại đó thuộc thẩm quyền tài phán của tòa tiểu tụng. Nếu
+          yêu cầu thực hiện tiến trình giải quyết tại tòa tiểu tụng được đưa ra trước khi chỉ định một trọng tài
+          viên, thủ tục trọng tài đó sẽ dừng về mặt hành chính. Nếu yêu cầu thực hiện tiến trình giải quyết tại
+          tòa tiểu tụng được đưa ra sau khi chỉ định một trọng tài viên, trọng tài viên sẽ xác định xem liệu tranh
+          chấp nên tiếp tục thủ tục trọng tài hay nên được quyết định tại tòa án đó. Việc phân xử đó sẽ chỉ được
+          thực hiện bằng các tài liệu bằng văn bản, trừ khi bạn hoặc Tinder chọn đòi quyền sử dụng lời nói trước
+          Trọng tài. Nhưng dù bạn chọn thủ tục trọng tài hay tòa tiểu tụng, bạn đều đồng ý rằng, trong mọi trường
+          hợp, bạn sẽ không bắt đầu, hoặc duy trì, hoặc tham gia hoạt động khởi tố tập thể, trọng tài tập thể
+          chống lại Công ty hoặc hành động khởi tố đại diện hoặc thủ tục xúc tiến kiện tụng nào khác chống lại
+          Tinder.
+          Bằng cách sử dụng Dịch vụ dưới bất kỳ hình thức nào, bạn đồng ý với thỏa thuận trọng tài nêu trên. Khi
+          làm vậy, BẠN ĐÃ TỪ BỎ QUYỀN RA TOÀ để đòi quyền hoặc bảo vệ bất kỳ khiếu nại nào giữa bạn và Công ty
+          (ngoại trừ các vấn đề có thể được đưa ra tòa tiểu tụng). BẠN CŨNG TỪ BỎ QUYỀN THAM GIA VÀO HOẠT ĐỘNG
+          KHỞI TỐ TẬP THỂ HOẶC THỦ TỤC XÚC TIẾN KIỆN TỤNG TẬP THỂ KHÁC CỦA MÌNH. Nếu bạn đòi quyền khiếu nại chống
+          lại Tinder bên ngoài tòa tiểu tụng (và Tinder không yêu cầu chuyển khiếu nại tới một tòa án như vậy),
+          các quyền của bạn sẽ được xác định bởi TRỌNG TÀI VIÊN TRUNG LẬP, CHỨ KHÔNG PHẢI THẨM PHÁN HAY BỒI THẨM
+          ĐOÀN, và trọng tài viên sẽ xác định tất cả các khiếu nại và tất cả các vấn đề liên quan đến thủ tục
+          trọng tài của tranh chấp đó. Bạn có quyền được xét xử công bằng trước trọng tài viên. Trọng tài viên nói
+          chung có thể đưa ra mọi sự bồi thường mà nguyên đơn yêu cầu mà tòa án có thể, bao gồm khả năng yêu cầu
+          tiến hành phiên điều trần để nghe kiến nghị bác đơn (có thể bao gồm một kiến nghị bác đơn dựa trên lời
+          biện hộ của các bên, cũng như một kiến nghị bác đơn dựa trên lời biện hộ của các bên kèm theo bằng chứng
+          đã nộp), nhưng bạn cần lưu ý rằng các thủ tục tố tụng trọng tài thường đơn giản và hợp lý hơn so với các
+          phiên tòa và các thủ tục tố tụng tư pháp khác. Các quyết định của trọng tài có thể được thi hành tại tòa
+          án và có thể bị tòa án lật lại chỉ vì những lý do rất hạn chế. Để biết chi tiết về thủ tục trọng tài,
+          hãy xem Thủ tục Trọng tài của chúng tôi.
+          Mọi thủ tục thi hành thỏa thuận trọng tài này, bao gồm bất kỳ thủ tục nào giúp xác nhận, sửa đổi, hoặc
+          bãi bỏ một phán quyết trọng tài, có thể được bắt đầu tại bất kỳ tòa án có thẩm quyền nào. Trong trường
+          hợp thỏa thuận trọng tài này vì bất kỳ lý do nào bị coi là không thể thi hành, thì mọi kiện tụng chống
+          lại Công ty (trừ các vụ khiếu kiện nhỏ) có thể được bắt đầu chỉ ở các tòa án liên bang hoặc tiểu bang
+          nằm ở Hạt Dallas, Texas. Bằng cách này bạn đồng ý một cách không thể hủy bỏ được với thẩm quyền của các
+          tòa án đó vì các mục đích như vậy.
+          Nền tảng giải quyết tranh chấp trực tuyến của Ủy ban Châu Âu nằm tại http://ec.europa.eu/odr. Tinder
+          không tham gia vào các thủ tục giải quyết tranh chấp trước một thực thể trọng tài người tiêu dùng dành
+          cho các thành viên cư trú trong Khu vực Kinh tế EU hoặc Châu Âu.
+          <br>
+          <br>
+          <h5>16. Luật Điều chỉnh.</h5>
+          Đối với các thành viên cư trú trong Khu vực Kinh tế EU hoặc Châu Âu hoặc bất kỳ nơi nào mà thủ tục trọng
+          tài của chúng tôi bị cấm theo luật, luật pháp của Texas, Hoa Kỳ, ngoại trừ các quy tắc luật xung đột của
+          Texas, sẽ áp dụng cho mọi tranh chấp phát sinh từ hoặc liên quan đến Thỏa thuận này hoặc Dịch vụ. Dù đã
+          đề cập đến ở trên, Thỏa thuận về trọng tài trong Mục 15 sẽ chịu sự điều chỉnh của Đạo luật Trọng tài
+          Liên bang. Để tránh nghi ngờ, việc lựa chọn pháp luật điều chỉnh của Texas sẽ không thay thế cho bất kỳ
+          pháp luật bảo vệ người tiêu dùng bắt buộc nào trong các khu vực pháp lý như vậy.
+          <br>
+          <br>
+          <h5>17. Địa điểm.</h5>
+          Ngoại trừ các thành viên cư trú tại Khu vực Kinh tế EU hoặc Châu Âu, những người có thể đưa ra yêu cầu
+          bồi thường tại quốc gia cư trú của họ theo luật hiện hành và ngoại trừ các khiếu nại có thể được đưa ra
+          tòa tiểu tụng có thẩm quyền phù hợp, tất cả các khiếu nại phát sinh từ hoặc liên quan Thỏa thuận này,
+          với Dịch vụ hoặc mối quan hệ của bạn với Tinder rằng vì bất kỳ lý do gì không được đưa ra phân xử trọng
+          tài đều sẽ chỉ được tiến hành kiện tụng tại các tòa án liên bang hoặc tiểu bang của Hạt Dallas, Texas,
+          Hoa Kỳ. Bạn và Tinder thống nhất việc thực thi thẩm quyền cá nhân tại các tòa án trong phạm vi bang
+          Texas và miễn trừ bất kỳ yêu cầu bồi thường nào nơi mà các phiên tòa như vậy biến thành diễn đàn bất
+          lợi.
+          <br>
+          <br>
+          <h5>18. Trách nhiệm Bồi thường của Bạn.</h5>
+          Bạn đồng ý, trong phạm vi cho phép theo pháp luật hiện hành, bồi thường, bảo vệ và giữ cho Tinder, các
+          chi nhánh của chúng tôi, các viên chức, giám đốc, đại diện, và nhân viên tương ứng của họ và của chúng
+          tôi khỏi và trước bất kỳ khiếu nại, yêu cầu, khiếu kiện, thiệt hại, tổn thất, án phí, trách nhiệm pháp
+          lý và các chi phí, bao gồm phí luật sư, do, phát sinh từ hoặc liên quan đến bất kỳ cách thức nào giúp
+          bạn truy cập hoặc sử dụng Dịch vụ, Nội dung của bạn, hoặc việc bạn vi phạm Thỏa thuận này.
+          <br>
+          <br>                <h5>19. Điều khoản Toàn bộ thỏa thuận; Khác.</h5>
+          Thỏa thuận này, bao gồm Chính sách Quyền riêng tư, Chính sách Cookie, Lời khuyên An toàn, Nguyên tắc
+          Cộng đồng và Thủ tục Trọng tài (nếu áp dụng cho bạn), và bất kỳ điều khoản nào mà bạn tiết lộ và đồng ý
+          nếu bạn mua các tính năng, sản phẩm hoặc dịch vụ bổ sung mà chúng tôi cung cấp trên Dịch vụ, chứa toàn
+          bộ thỏa thuận giữa bạn và Tinder về việc sử dụng Dịch vụ này. Nếu bất kỳ điều khoản nào của Thỏa thuận
+          này không có hiệu lực, phần còn lại của Thỏa thuận này sẽ tiếp tục có hiệu lực đầy đủ. Việc Công ty
+          không thực hiện hoặc thực thi bất kỳ quyền hoặc điều khoản nào của Thỏa thuận này sẽ không cấu thành sự
+          từ bỏ quyền hoặc điều khoản đó. Bạn đồng ý rằng tài khoản Tinder của bạn là không thể chuyển nhượng được
+          và tất cả các quyền của bạn đối với tài khoản và Nội dung liên quan sẽ chấm dứt sau khi bạn qua đời.
+          Không có đại lý, đối tác, liên doanh, ủy thác hoặc mối quan hệ đặc biệt khác hoặc việc làm nào được tạo
+          ra theo Thỏa thuận này và bạn không được đưa ra bất kì hoạt động đại diện thay mặt cho hoặc ràng buộc
+          Tinder theo bất kỳ cách nào
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary">Đồng ý</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<button #btnSuccess type="button" class="btn btn-primary" data-toggle="modal" data-target="#successfulModal" [hidden]="true">-->
+<!--</button>-->
+
+<button #btnConfirm type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal" [hidden]="true">
+</button>
+<!--confirm modal-->
+<div id="confirmModal" class="modal fade" style="margin-left: 33%" >
+  <div class="modal-dialog modal-confirm modal-confirm-success">
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+    <div class="modal-content">
+      <div class="modal-header modal-header-success justify-content-center">
+        <div class="icon-box">
+          <i class="material-icons">&#xE876;</i>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        <h4>THÔNG BÁO!</h4>
+        <p>Bạn có xác nhận muốn tạo tài khoản.</p>
+        <button type="button" class="btn-modal btn-grad-blue mx-3" (click)="confirmCreate()">Xác nhận</button>
+        <button type="button" #btnCloseConfirm class="btn-modal btn-grad-red mx-3" data-dismiss="modal">Hủy bỏ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button #btnSuccess type="button" class="btn btn-primary" data-toggle="modal" data-target="#successfulModal" [hidden]="true">
+</button>
+
+<!--success modal-->
+<div id="successfulModal" class="modal fade" style="margin-left: 33%">
+  <div class="modal-dialog modal-confirm modal-confirm-success">
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+    <div class="modal-content">
+      <div class="modal-header modal-header-success justify-content-center">
+        <div class="icon-box">
+          <i class="material-icons">&#xE876;</i>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        <h4>THÔNG BÁO!</h4>
+        <p>Bạn đã tạo mới tài khoản thành công.</p>
+        <button type="button" class="btn-modal btn-grad-blue" (click)="confirmSuccess()">OK</button>
+        <button type="button" #btnCloseSuccess class="btn-modal btn-grad-blue" data-dismiss="modal" hidden></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

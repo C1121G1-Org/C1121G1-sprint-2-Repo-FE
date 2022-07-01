@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TokenStorageService} from "../../service/security/token-storage.service";
 import {ShareService} from "../../service/security/share.service";
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 import {GuestFriendService} from "../../service/guest-friend.service";
 import {Guest} from "../../component/profile/model/guest";
@@ -176,10 +176,10 @@ export class HeaderComponent implements OnInit {
 
   /*
     Created by ChienLV
-    Date: 11:00 30/06/2022
-    Desc: addFriend(idGuest, idFriend) => Gửi lời gợi ý kết bạn dựa vào idGuest, idFriend;
+    Date: 15:00 29/06/2022
+    Desc: removeSuggestion(id) => Từ chối lời gợi ý kết bạn dựa vào id của bảng guest_friend;
   */
-  addFriend(idGuest: number, idFriend: number, idGuestFriend: number) {
+  addFriend(idGuest: number, idFriend: number) {
     idGuest = this.guest.id;
     console.log(`idGuest:${idGuest},idFriend:${idFriend}`);
     if (idGuest != idFriend) {
@@ -192,7 +192,8 @@ export class HeaderComponent implements OnInit {
             friendDto : this.friend
           }
           this.guestFriendService.addFriend(this.guestFriend).subscribe(()=>{
-            this.removeSuggestion(idGuestFriend);
+            alert('ok');
+            this.removeSuggestion(this.guest.id);
           })
         })
       })
