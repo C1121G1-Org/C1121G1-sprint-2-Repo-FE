@@ -92,9 +92,8 @@
           </div>
         </div>
 
-        <div class="post-content">
-          {{post.content}}
-          <img [src]="post.image"/>
+        <div class="post-content" [innerHTML]="post.content">
+          <img [hidden]="post.image == null || post.image == ''" [src]="post.image"/>
         </div>
         <!--        <div class="liked-by">-->
         <!--        <span>-->
