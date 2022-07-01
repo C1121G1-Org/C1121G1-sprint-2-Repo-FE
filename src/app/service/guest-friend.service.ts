@@ -35,11 +35,9 @@ export class GuestFriendService {
   deleteFriend(id: number): Observable<any> {
     return this.http.delete(`${this.URL}/profile/delete-friend/${id}`);
   }
-<<<<<<< HEAD
 
   findGuestByUsername(username : string):Observable<any>{
     return this.http.get(`${this.URL}/profile/get-guest-by-username/${username}`)
   }
-=======
->>>>>>> 3b67fb1d4318a0569cbb7487479c23a5f01285ef
+
 }
