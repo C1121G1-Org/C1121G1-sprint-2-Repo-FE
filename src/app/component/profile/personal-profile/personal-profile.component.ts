@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {GuestFriendService} from "../../../service/guest-friend.service";
 import {Guest} from "../model/guest";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {TokenStorageService} from "../../../service/security/token-storage.service";
 import {Post} from "../model/post";
 
