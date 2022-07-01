@@ -5,7 +5,6 @@ import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
 import {Router} from "@angular/router";
 
-// @ts-ignore
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -120,7 +119,6 @@ export class PostCreateComponent implements OnInit {
       this.imgVip = reader.result as string;
     };
   }
-
 
   showFeeling(element: any) {
     console.log(element.value);

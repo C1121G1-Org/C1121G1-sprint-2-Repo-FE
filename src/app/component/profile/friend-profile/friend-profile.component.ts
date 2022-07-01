@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GuestFriendService} from "../../../service/guest-friend.service";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Friend} from "../model/friend";
 import {Guest} from "../model/guest";
 import {GuestFriend} from "../model/guest-friend";
