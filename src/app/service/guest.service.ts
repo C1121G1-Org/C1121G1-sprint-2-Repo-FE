@@ -14,8 +14,20 @@ export class GuestService {
 
   }
 
-  getAllMember(name: string, page: number): Observable<any> {
-    return this.http.get<any>(`${API_GUEST}/list/member?nameMember=` + name + '&page=' + page);
+  getAllMember(page: number): Observable<any> {
+    return this.http.get<any>(`${API_GUEST}/list/member` + '?page=' + page);
+  }
+
+  getSearchMember(name:string,page: number): Observable<any> {
+    return this.http.get<any>(`${API_GUEST}/search?nameMember=` + name + '&page=' + page);
+  }
+
+  getVipMember(page: number): Observable<any> {
+    return this.http.get<any>(`${API_GUEST}/vip` + '?page=' + page);
+  }
+
+  getNormalMember(page: number): Observable<any> {
+    return this.http.get<any>(`${API_GUEST}/normal` + '?page=' + page);
   }
 
 }

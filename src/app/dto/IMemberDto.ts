@@ -12,6 +12,8 @@ export interface IMemberDto {
 
   walletCoin: number;
 
+  amountRecharge: number;
+
   reportName: string;
 
   numberOfViolations: number;

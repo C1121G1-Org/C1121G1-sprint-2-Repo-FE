@@ -17,6 +17,7 @@ import {GuestFriendModule} from './component/guest-friend/guest-friend.module';
 import {HomepageModule} from './component/homepage/homepage.module';
 import {PostModule} from './component/post/post.module';
 import {ReportModule} from './component/report/report.module';
+
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -28,6 +29,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatDialogModule} from '@angular/material/dialog';
+
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+
+
 
 @NgModule({
   declarations: [
@@ -53,7 +59,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     WalletModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatInputModule,
@@ -63,7 +68,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     CdkTableModule,
     MatSnackBarModule,
     MatDialogModule,
-
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
