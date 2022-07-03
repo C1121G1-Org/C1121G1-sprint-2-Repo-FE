@@ -1,0 +1,121 @@
+h1 {
+  font-size: 36px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.tbl-header {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tbl-content {
+  height: 300px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: black;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+.make-color {
+  /*background: -webkit-linear-gradient(left, #dc3545, #111be2);*/
+  /*background: linear-gradient(to right, #dc3545, #111be2);*/
+  background-color: lightsteelblue;
+  /*background: linear-gradient(-45deg, #ffec61, #f321d7);*/
+  font-family: 'Montserrat', sans-serif;
+}
+
+section {
+  margin: 50px;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.search-input {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-position: center;
+  transition: background 0.8s;
+  background-color: #ffffff;
+  color: black;
+  width: 49%;
+}
+
+.search-select {
+  display: inline-block;
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 0.6rem 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-position: center;
+  transition: background 0.8s;
+  width: 100%;
+}
+
+.btn-search {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-position: center;
+  transition: background 0.8s;
+  width: 49%;
+}
+
+tr:hover {
+  background-color: #84c0ec;
+}

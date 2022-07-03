@@ -1,1 +1,62 @@
-<p>report-create works!</p>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="padding-top: 8rem">
+  Tố cáo
+</button>
+
+<div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body make-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <section>
+          <!--for demo wrap-->
+          <h1 class="mb-5">Vui lòng chọn hạn mục tố cáo</h1>
+
+          <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+              <tr *ngFor="let report of reportList ">
+                <input type="checkbox" > {{report.name}}
+              </tr>
+<!--              <tr>-->
+<!--                <td><input type="checkbox"> Đăng bài vi phạm thuần phong mỹ tục, văn hoá, pháp luật Việt,....-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><input type="checkbox"> Đăng bài sử dụng ngôn ngữ Tên Code thay Tiếng Việt có dấu.-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><input type="checkbox"> Commet chửi thề, gây hiềm khích với các thành viên khác.-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><input type="checkbox"> Spam các trang Wed lừa đảo với bạn.</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><input type="checkbox"> Gửi các hình ảnh đồ truỵ cho bạn.</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><input type="checkbox"> Bài viết đăng không đúng Box.</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><input type="checkbox"> Sử dụng biểu tượng(Avatar) có nội dung không lành mạnh, bạo lực.</td>-->
+<!--              </tr>-->
+              </thead>
+            </table>
+          </div>
+          <div class=" col-md-12 text-center mx-auto mt-4 ">
+            <button type="button" class="btn btn-danger mx-5" >
+              <i class="fa fa-paper-plane"></i>  Tố cáo
+            </button>
+            <button type="button" class="btn btn-primary" >
+              <i class="fa-solid fa-right-from-bracket"></i>  HỦY
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
