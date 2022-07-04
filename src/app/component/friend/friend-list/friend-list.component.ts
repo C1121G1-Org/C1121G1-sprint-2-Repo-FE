@@ -100,6 +100,19 @@ export class FriendListComponent implements OnInit {
     button.click();
   }
 
+  onOpenBlockModal(b: Friend) {
+    this.deleteFriend = b;
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#blockModal');
+    container.appendChild(button);
+    this.check = true;
+    button.click();
+  }
+
   delete(event) {
     this.friendService.deleteFriend(this.deleteFriend).subscribe(() => {
       event.click();
