@@ -42,15 +42,15 @@ iframe {
   border: 0;
 }
 
-a, a:focus, a:hover {
-  text-decoration: none;
-  outline: 0;
-}
-
-/*a:focus, a:hover {*/
-/*  background-color: #fd267a;*/
-/*  background-image: linear-gradient(45deg,#fd267a,#ff6036);*/
+/*a, a:focus, a:hover {*/
+/*  text-decoration: none;*/
+/*  outline: 0;*/
 /*}*/
+
+a:focus, a:hover {
+  background-color: #fd267a;
+  background-image: linear-gradient(45deg,#fd267a,#ff6036);
+}
 
 .btn-main {
   background-color: #fd267a;
