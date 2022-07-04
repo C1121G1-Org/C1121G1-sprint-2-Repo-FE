@@ -28,17 +28,22 @@
             <div class="card  shadow-lg p-3 mb-5 bg-white " style="width: 18rem; margin-right: 12px">
               <img src="{{f.image}}" width="130" height="200" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">{{f.name}}</h5>
+                <h5 class="card-title">{{f.nickName}}</h5>
                 <p>{{f.address}}</p>
                 <small class="card-text">
                   {{f.dateOfBirth}}
                 </small><br>
+                <small class="card-text">
+                  {{f.name}}
+                </small>
                 <p></p>
 
                 <div style="display: flex; justify-content: space-between;margin-top: 10px">
                   <button style="display: flex; justify-content: center; align-items: center" type="button"
-                          class="btn btn-grad-blue">
-                    <span><i class="fa-solid fa-xmark"></i> Chặn</span>
+                          class="btn btn-grad-blue" data-toggle="modal"
+                          data-target="#exampleModaltest">
+                    <span><a (click)="onOpenBlockModal(f)" style="color: white">
+                      <i class="fa-solid fa-xmark"></i> Chặn</a></span>
                   </button>
 
                   <button style="display: flex; justify-content: center; align-items: center" type="button"
@@ -102,6 +107,30 @@
           <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-grad-blue mx-3" #closeModal data-dismiss="modal">Hủy</button>
             <button (click)="delete(closeModal)" type="button" class="btn btn-grad-red">Xóa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  Modal Block-->
+  <button [hidden]="true" #deleteButton data-toggle="modal" data-target="#blockModal"></button>
+  <div id="blockModal" class="modal fade">
+    <div class="modal-dialog modal-confirm modal-confirm-danger">
+      <div class="modal-content">
+        <div class="modal-header modal-header-danger justify-content-center">
+          <div class="icon-box">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body text-center" *ngIf="check">
+          <h4>Thông báo</h4>
+          <p>Bạn có muốn chặn bạn <span style="color: red">{{deleteFriend.name}}</span> không ?</p>
+          <p style="color: red">Lưu ý! Thao tác này không thể hoàn tác</p>
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-grad-blue mx-3" #closeModal data-dismiss="modal">Hủy</button>
+            <button (click)="delete(closeModal)" type="button" class="btn btn-grad-red">Chặn</button>
           </div>
         </div>
       </div>

@@ -9,6 +9,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [FriendListComponent],
+  exports: [
+    FriendListComponent
+  ],
   imports: [
     HttpClientModule,
     CommonModule,
