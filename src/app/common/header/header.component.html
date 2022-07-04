@@ -1,83 +1,77 @@
-<header>
+<!--
+Fixed Navigation
+==================================== -->
+<header class="navigation fixed-top sticky-header">
   <div class="container">
-    <div class="menu-bar-content">
-      <ul>
-        <li class="logo"><a href="#">MEETFRIEND</a></li>
-        <!-- <li><a href="#">Đà Nẵng <i class="fa fa-sort-down"></i></a></li> -->
-        <li><input style="width: 300px" class="header-search" placeholder="Bạn cần tìm gì?" type="text"><i
-          class="fa fa-search"></i></li>
-        <li><a href="#">Quản lý Website <i class="fa fa-sort-down"></i></a>
-          <div class="sub-menu">
-            <ul>
-              <li><a href="#">Đăng thông báo</a></li>
-              <li><a href="#">Quản lý hội nhóm</a></li>
-              <li><a href="#">Quản lý bài đăng</a></li>
-              <li><a href="#">Quản lý hội viên</a></li>
-              <li><a href="#">Nhận phản hồi</a></li>
-            </ul>
-          </div>
-        </li>
-        <li><a href="#">Quản lý hộp thư <i class="fa fa-sort-down"></i></a>
-          <div class="sub-menu">
-            <ul>
-              <li><a href="#">Đọc thư</a></li>
-              <li><a href="#">Gửi thư</a></li>
-              <li><a href="#">Xóa thư</a></li>
-            </ul>
-          </div>
-        </li>
-        <li><a href="#">Quản lý thông tin cá nhân <i class="fa fa-sort-down"></i></a>
-          <div class="sub-menu">
-            <ul>
-              <li><a href="#">Đổi ảnh đại diện</a></li>
-              <li><a href="#">Đăng Status/Comment</a></li>
-              <li><a href="#">Thiết lập trạng thái</a></li>
-              <li><a href="#">Đổi mật khẩu</a></li>
-              <li><a href="#">Tặng quà</a></li>
-            </ul>
-          </div>
-        </li>
-        <li><a href="#">Quản lý bạn bè <i class="fa fa-sort-down"></i></a>
-          <div class="sub-menu">
-            <ul>
-              <li><a href="#">Xem lời mời kết bạn</a></li>
-              <li><a href="#">Gửi lời mời kết bạn</a></li>
-              <li><a href="#">Xem thông tin bạn bè</a></li>
-            </ul>
-          </div>
-        <li [hidden]="isLoggedIn" class="header-item-login"><a [routerLink]="['/login']">Đăng nhập</a></li>
-        <li [hidden]="!isLoggedIn">
-          <div class="header-item header-item-menu">
-            <div class="header-icon">
+    <!-- main nav -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <!-- logo -->
+      <a class="navbar-brand logo" href="">
+        <img style="background-color: #fd267a;
+                background-image: linear-gradient(45deg,#fd267a,#ff6036); height: 5rem; width: 7.5rem; border-radius: 1rem"
+             class="logo-default"
+             src="assets\images\Dating.png" alt="logo"/>
+        <img style="height: 5rem" width="120rem" class="logo-white" src="assets\images\Dating.png" alt="logo"/>
+      </a>
+      <!-- /logo -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+              aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="navbar-nav ml-auto text-center">
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              Bạn bè
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="index.html">Lời mời kết bạn</a>
+              <a class="dropdown-item" href="onepage-slider.html">Gợi ý kết bạn</a>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">Quản lý thành viên</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">Top 100</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="">Nhận phản hồi</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" routerLink="/searchList">Tìm kiếm bạn bè</a>
+          </li>
+
+          <button [hidden]="isLoggedIn" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8"
+                  class="btn btn-main"
+                  [routerLink]="['/login']">Đăng nhập
+          </button>
+
+          <li [hidden]="!isLoggedIn" class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
               <img src="{{imageLink}}"
                    alt="" style="border-radius: 50%;width: 40px; height: 40px; object-fit: cover">
-              {{username}} <i class="fa-solid fa-angle-down"></i>
-
+              <span class="header-text">
+                {{username}} <i class="fa-solid fa-angle-down"></i>
+              </span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['/personal-information']">Thông tin cá nhân</a>
+              <a class="dropdown-item" [routerLink]="['/change-personal-password']">Bảo mật</a>
+              <a class="dropdown-item" (click)="logOut()" style="color: white;">Đăng Xuất </a>
             </div>
-            <div class="header-text">
-<!--              {{username}} <i class="fa-solid fa-angle-down"></i>-->
-            </div>
-          </div>
-          <div class="sub-menu">
-            <ul>
-              <li><a [routerLink]="['/personal-information']">Thông tin cá nhân</a></li>
-              <li><a [routerLink]="['/change-personal-password']">Bảo mật</a></li>
-              <li><a (click)="logOut()">Đăng xuất</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /main nav -->
   </div>
 </header>
-
-
-
-
-
-
-
-
-
-
-
+<!--
+End Fixed Navigation
+==================================== -->

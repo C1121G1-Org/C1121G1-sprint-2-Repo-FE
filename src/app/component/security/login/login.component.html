@@ -1,6 +1,6 @@
-<div class="parent clearfix">
+<div class="parent clearfix" style="margin-top: 8rem" >
   <div class="bg-illustration">
-    <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo">
+<!--    <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo">-->
 
     <div class="burger-btn">
       <span></span>
@@ -12,12 +12,12 @@
 
   <div class="login">
     <div class="container">
-      <h1>Đăng nhập </h1>
       <div class="login-form">
+        <h1>Đăng nhập </h1>
         <form [formGroup]="loginForm" (ngSubmit)="login(errorModalBtn,closeErrorModal)">
           <div class="form-group ">
             <input type="text" placeholder="Email" class="form-control form-control-lg" id="username"
-                   aria-describedby="emailHelp" formControlName="username">
+                   aria-describedby="emailHelp" formControlName="username" style="width: 487px">
             <div *ngIf="loginForm?.touched">
               <p class="text-danger" *ngIf="usernameForm?.errors?.required">Vui lòng nhập tên tài khoản.</p>
               <p class="text-danger" *ngIf="usernameForm?.errors?.maxlength">Vui lòng đúng định dạng.</p>
@@ -27,19 +27,21 @@
           <div class="form-group">
             <div class="input-group" *ngIf="!showPassword">
               <input placeholder="Mật khẩu" type="password" class="form-control form-control-lg password" id="password"
-                     formControlName="password">
+                     formControlName="password" >
               <div class="input-group-prepend">
-                <i (click)="toggleShowPassword()" class="fa-solid fa-eye input-group-text eye-icon"
-                   style="cursor: pointer; pointer-events: all;">
+                <i (click)="toggleShowPassword()" class="fa-solid fa-eye input-group-text eye-icon" style="cursor: pointer; pointer-events: all; background-color: white; border: none"
+                 >
                 </i>
               </div>
             </div>
 
             <div class="input-group" placeholder="Mật khẩu" *ngIf="showPassword">
-              <input type="text" class="form-control form-control-lg" formControlName="password">
-              <div class="input-group-prepend">
+
+
+              <input placeholder="Mật khẩu" type="text" class="form-control form-control-lg" formControlName="password">
+              <div class="input-group-prepend" style="background-color: white">
                 <i (click)="toggleShowPassword()" class="fa-solid fa-eye-slash input-group-text eye-icon"
-                   style="cursor: pointer; pointer-events: all;">
+                   style="cursor: pointer; pointer-events: all; background-color: white; border: none">
                 </i>
               </div>
             </div>
@@ -57,9 +59,14 @@
             <span>lưu đăng nhập </span>
           </div>
           <div class="forget-pass">
-            <a href="#">Đăng ký tài khoản</a>
+            <a [routerLink]="['/login']">Đăng ký tài khoản</a>
           </div>
-          <div class="social-login">
+
+          <button class="btn" style="background-color:#fd316d; color: white; height: 40px;" type="submit">Đăng Nhập</button>
+          <h5 style="display :flex; justify-content: center; margin-top: 50px">or</h5>
+
+          <div class="social-login" style="margin-top: 50px">
+
             <a href="#" class="facebook btn d-flex justify-content-center align-items-center">
               <span class="icon-facebook mr-3"></span><i style="color: white; margin-right: 5px"
                                                          class="fab fa-lg fa-facebook-square"></i> Đăng nhập với Facebook
@@ -71,8 +78,6 @@
               <span class="icon-google mr-3"></span> Login with Google
             </a>
           </div>
-
-          <button type="submit">Đăng Nhập</button>
         </form>
       </div>
     </div>
