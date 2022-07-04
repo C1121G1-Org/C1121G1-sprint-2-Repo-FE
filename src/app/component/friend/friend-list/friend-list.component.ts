@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// @ts-ignore
 import {FriendDto} from "../../../dto/friend-dto";
 import {FriendService} from "../../../service/friend.service";
 import {Friend} from "../../../models/friend";
@@ -94,6 +95,19 @@ export class FriendListComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '#exampleModal');
+    container.appendChild(button);
+    this.check = true;
+    button.click();
+  }
+
+  onOpenBlockModal(b: Friend) {
+    this.deleteFriend = b;
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#blockModal');
     container.appendChild(button);
     this.check = true;
     button.click();
