@@ -1,0 +1,40 @@
+
+.sub-menu {
+  position: absolute;
+  background-color: white;
+  width: 220px;
+  /*height: 150px;*/
+  left: 0;
+  top: 120%;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.sub-menu ul {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.sub-menu ul li {
+  padding: 6px 0;
+}
+
+.sub-menu > ul > li:hover > a {
+  color: #D70018;
+  font-weight: bold;
+}
+
+.menu-bar-content ul li .sub-menu {
+  transition: all 0.2s ease;
+}
+
+.header-text:hover .sub-menu {
+  opacity: 1;
+  visibility: visible;
+}
+

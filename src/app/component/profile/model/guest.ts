@@ -1,11 +1,5 @@
-import {Wallet} from "../component/profile/model/wallet";
+import {Wallet} from "./wallet";
 
-/*
-  Created by khoaVC
-  Role: Guest
-  Time: 10:00 21/06/2022
-  Interface: Guest
-*/
 export interface Guest {
   id?: number;
   name?: string;
@@ -21,4 +15,3 @@ export interface Guest {
   wallet?: Wallet;
   account?: Account;
 }
-

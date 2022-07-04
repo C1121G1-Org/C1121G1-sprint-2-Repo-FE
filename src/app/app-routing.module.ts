@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {SearchByNameComponent} from './component/homepage/search-by-name/search-by-name.component';
 import {GuestCreateComponent} from './component/guest/guest-create/guest-create.component';
 import {GuestSurveyComponent} from './component/guest/guest-survey/guest-survey.component';
@@ -13,7 +13,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),
+
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
