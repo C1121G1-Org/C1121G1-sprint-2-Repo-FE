@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// @ts-ignore
 import {FriendDto} from "../../../dto/friend-dto";
 import {FriendService} from "../../../service/friend.service";
 import {Friend} from "../../../models/friend";
