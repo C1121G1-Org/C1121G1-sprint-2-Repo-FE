@@ -4,7 +4,7 @@
     <h3 STYLE="text-align: center; padding-top: 20px">DANH SÁCH BẠN BÈ</h3>
   </div>
 
-  <div class="row col-6 justify-content-between ml-1" style="margin-top: 80px">
+  <div class="row col-6 justify-content-between ml-1" style="margin-top: 100px">
     <div>
       <input #names [ngModel]="name" (change)="search(names.value)" style="width: 250px"
              class="header-search search-input" placeholder="Nhập tên bạn bè ?"
@@ -46,7 +46,7 @@
                       <i class="fa-solid fa-xmark"></i> Chặn</a></span>
                   </button>
 
-                  <button style="display: flex; justify-content: center; align-items: center" type="button"
+                  <button style="display: flex; justify-content: center ; align-items: center" type="button"
                           class="btn btn-grad-red mx-2" data-toggle="modal"
                           data-target="#exampleModaltest">
                   <span><a (click)="onOpenDeleteModal(f)" style="color: white">
@@ -113,13 +113,14 @@
     </div>
   </div>
 
+<!--  Modal Block-->
   <button [hidden]="true" #deleteButton data-toggle="modal" data-target="#blockModal"></button>
   <div id="blockModal" class="modal fade">
     <div class="modal-dialog modal-confirm modal-confirm-danger">
       <div class="modal-content">
         <div class="modal-header modal-header-danger justify-content-center">
           <div class="icon-box">
-            <i class="fa fa-trash"></i>
+            <i class="fa-solid fa-xmark"></i>
           </div>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
