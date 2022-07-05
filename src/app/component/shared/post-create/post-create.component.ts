@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from "../../../service/post.service";
-import {AngularFireStorage} from "@angular/fire/storage";
-import {finalize} from "rxjs/operators";
-import {Router} from "@angular/router";
+import {AngularFireStorage} from '@angular/fire/storage'
+import {finalize} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-create',
@@ -34,46 +34,47 @@ export class PostCreateComponent implements OnInit {
         privacy: new FormControl('Công khai'),
         feeling: new FormControl(),
         content: new FormControl('', Validators.required),
-        guestId: new FormControl('')
+        guestId: new FormControl('1')
       }
     )
   }
 
-  get image() {
-    return this.createPostForm.get('image');
-  }
-
-  get postDate() {
-    return this.createPostForm.get('postDate');
-  }
-
-  get privacy() {
-    return this.createPostForm.get('privacy');
-  }
-
-  get feeling() {
-    return this.createPostForm.get('feeling');
-  }
-
-  get content() {
-    return this.createPostForm.get('content');
-  }
-
-  get guestId() {
-    return this.createPostForm.get('guestId');
-  }
+  // get image() {
+  //   return this.createPostForm.get('image');
+  // }
+  //
+  // get postDate() {
+  //   return this.createPostForm.get('postDate');
+  // }
+  //
+  // get privacy() {
+  //   return this.createPostForm.get('privacy');
+  // }
+  //
+  // get feeling() {
+  //   return this.createPostForm.get('feeling');
+  // }
+  //
+  // get content() {
+  //   return this.createPostForm.get('content');
+  // }
+  //
+  // get guestId() {
+  //   return this.createPostForm.get('guestId');
+  // }
 
   // create(successButton: HTMLButtonElement, errorModalBtn: HTMLButtonElement) {
-  create(closeBtn: HTMLButtonElement) {
+  create(closeBtn: HTMLButtonElement, successButton: HTMLButtonElement) {
+    this.createPostForm.controls.feeling.setValue(this.feeling1);
     if (!this.selectedImage) {
       this.postService.createPost(this.createPostForm.value).subscribe(() => {
         this.ngOnInit();
-        // successButton.click();
-        // .then(r => this.alertService.showMessage("Thêm mới thành công!"));
+        successButton.click();
         console.log('success');
         this.hiddenFeeling = true;
         closeBtn.click();
       }, error => {
+        console.log(this.createPostForm.controls.feeling);
         console.log(this.createPostForm.value);
       })
 
@@ -86,17 +87,17 @@ export class PostCreateComponent implements OnInit {
           fileRef.getDownloadURL().subscribe((url) => {
             this.createPostForm.patchValue({image: url});
             this.postService.createPost(this.createPostForm.value).subscribe(() => {
-                this.createPostForm.reset();
-
-                // successButton.click();
-                // .then(r => this.alertService.showMessage("Thêm mới thành công!"));
+                this.ngOnInit();
+                successButton.click();
                 console.log('success');
                 this.hiddenFeeling = true;
+                this.imgVip = null;
+                this.hidden = true;
+                this.selectedImage = null;
                 closeBtn.click();
               }, error => {
-                console.log(this.createPostForm.value);
                 // errorModalBtn.click();
-                // this.errorProductName = error.error.errorMap.name;
+                console.log(this.createPostForm.value);
               }
             );
           });

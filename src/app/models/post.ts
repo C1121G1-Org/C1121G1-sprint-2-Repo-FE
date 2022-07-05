@@ -7,5 +7,5 @@ export interface Post {
   privacy?: string,
   feeling?: string,
   content?: string,
-  guestId?: Guest
+  guestId?: number
 }
