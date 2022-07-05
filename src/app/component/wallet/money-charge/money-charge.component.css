@@ -255,6 +255,7 @@ body {
   text-align: center;
   color: #fff;
   width: 75%;
+  padding-top: 30px;
 }
 
 .card__heading-span {
@@ -307,6 +308,7 @@ body {
 .card__price-value {
   font-size: 6rem;
   font-weight: 100;
+  padding-top: 20px;
 }
 
 .row {

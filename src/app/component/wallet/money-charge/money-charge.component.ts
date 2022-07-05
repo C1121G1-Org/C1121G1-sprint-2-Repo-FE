@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
+import {Component, OnInit} from "@angular/core";
 import {ChargeMoneyDto} from "../../../dto/ChargeMoneyDto";
 import {WalletService} from "../../../service/wallet.service";
+import {ICreateOrderRequest, IPayPalConfig} from "ngx-paypal";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -13,7 +14,9 @@ export class MoneyChargeComponent implements OnInit {
   chargeMoneyDto ?: ChargeMoneyDto;
   public amountMoney: string = '1';
   payPalConfig ?: IPayPalConfig;
-  constructor(private walletService: WalletService) {
+  durationInSeconds = 5;
+
+  constructor(private walletService: WalletService, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -65,6 +68,8 @@ export class MoneyChargeComponent implements OnInit {
           this.walletService.chargeMoney(this.chargeMoneyDto).subscribe(
             data => {
               console.log('Thanh Toán Thành Công')
+              this._snackBar.open('Thanh toán thành công', 'Ok', {
+              })
             }
           );
         });
@@ -75,7 +80,8 @@ export class MoneyChargeComponent implements OnInit {
         },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
-        console.log('Đã Hủy Thanh Toán')
+        this._snackBar.open('Đã Hủy Thanh Toán', 'Ok', {
+        })
       },
       onError: err => {
         console.log('OnError', err);
@@ -87,16 +93,20 @@ export class MoneyChargeComponent implements OnInit {
   }
   charge50() {
     this.amountMoney = '50'
-    console.log(this.amountMoney)
+    this._snackBar.open('Đã Chọn gói 50$', 'Ok', {
+
+    })
   }
 
   charge100() {
     this.amountMoney = '100'
-    console.log(this.amountMoney)
+    this._snackBar.open('Đã Chọn gói 100$', 'Ok', {
+    })
   }
 
   charge500() {
     this.amountMoney = '500'
-    console.log(this.amountMoney)
+    this._snackBar.open('Đã Chọn gói 500$', 'Ok', {
+    })
   }
 }

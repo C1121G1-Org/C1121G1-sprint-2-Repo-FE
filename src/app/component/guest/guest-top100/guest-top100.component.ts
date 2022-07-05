@@ -15,6 +15,7 @@ export class GuestTop100Component implements OnInit {
   totalGuestRecord: number;
   listGuest100 : ListGuest100DTO[]  = [];
   checkNullData: boolean = false;
+  pageNumber: number;
   constructor(private guestService: GuestService) { }
 
   ngOnInit(): void {
@@ -24,9 +25,13 @@ export class GuestTop100Component implements OnInit {
   private viewTop100() {
     this.guestService.viewTop100(this.indexPagination).subscribe(data =>{
       this.guest100 = data['content'];
+      this.totalPagination = data['totalPages']
+      this.pageNumber= data.pageable.pageNumber;
+      console.log(this.pageNumber)
     })
   }
   nextPage(){
+
     this.indexPagination = this.indexPagination +1;
     if(this.indexPagination > this.totalPagination){
       this.indexPagination = this.indexPagination-1;
