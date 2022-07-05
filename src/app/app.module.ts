@@ -22,7 +22,7 @@ import {FooterComponent} from "./common/footer/footer.component";
 import {HeaderComponent} from "./common/header/header.component";
 import {MoneyChargeComponent} from "./component/wallet/money-charge/money-charge.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatSliderModule} from "@angular/material/slider";
 
 
@@ -53,6 +53,7 @@ import {MatSliderModule} from "@angular/material/slider";
     HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
