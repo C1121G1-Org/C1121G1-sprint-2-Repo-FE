@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorageService.getUser().roles;
       this.loginForm.reset();
       this.shareService.sendClickEvent();
-      this.router.navigate(['']);
+      this.router.navigate(['login']);
     }, error => {
       if (error.status === 403) {
         this.errorMessage = 'Sai tên đăng nhập hoặc mật khẩu.';
@@ -82,4 +82,6 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password');
   }
+
+
 }

@@ -74,18 +74,19 @@ export class FriendProfileComponent implements OnInit {
     }
   }
 
-  // deleteFriend() {
-  //   this.guestFriendService.deleteFriend(this.guestFriend.id).subscribe(() => {
-  //     this.guestFriend = null;
-  //     this.deleteModalClose.nativeElement.click();
-  //   }, error => {
-  //     this.openErr.nativeElement.click();
-  //   });
-  // }
-  //
-  // openDeleteModal() {
-  //   this.deleteModalOpen.nativeElement.click();
-  // }
+  deleteFriend() {
+    this.guestFriendService.deleteFriend(this.guestFriend.id).subscribe(() => {
+      this.guestFriend = null;
+      this.deleteModalClose.nativeElement.click();
+    }, error => {
+      this.openErr.nativeElement.click();
+    });
+  }
+
+  openDeleteModal() {
+    this.deleteModalOpen.nativeElement.click();
+  }
+
   closeModalSuccess() {
     this.successModalClose.nativeElement.click();
     window.location.reload();

@@ -51,6 +51,7 @@ import {MoneyChargeComponent} from "./component/wallet/money-charge/money-charge
     SharedModule,
     WalletModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     NgxPayPalModule,

@@ -26,17 +26,17 @@ export class PersonalProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
-      let id = +param.get('id');
-      this.guestFriendService.getGuest(id).subscribe(data => {
-        this.guest = data;
-        this.guestFriendService.findAllGuestPost(this.guest.id).subscribe(data => {
-          this.posts = data;
-        })
-      }, err => {
-        this.openErrModal.nativeElement.click();
-      })
-    })
+    // this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
+    //   let id = +param.get('id');
+    //   this.guestFriendService.getGuest(id).subscribe(data => {
+    //     this.guest = data;
+    //     this.guestFriendService.findAllGuestPost(this.guest.id).subscribe(data => {
+    //       this.posts = data;
+    //     })
+    //   }, err => {
+    //     this.openErrModal.nativeElement.click();
+    //   })
+    // })
   }
 
   reload() {

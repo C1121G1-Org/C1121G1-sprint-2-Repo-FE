@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {GuestDto} from "./dto/guest-dto";
+import {Component, Input, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-root',

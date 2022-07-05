@@ -1,10 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TokenStorageService} from "../../service/security/token-storage.service";
 import {ShareService} from "../../service/security/share.service";
-import {Router} from '@angular/router';
-
+import {Router} from "@angular/router";
 import {GuestFriendService} from "../../service/guest-friend.service";
-import {Guest} from "../../component/profile/model/guest";
+import {Guest} from "../../models/guest";
 import {Friend} from "../../component/profile/model/friend";
 import {GuestFriend} from "../../component/profile/model/guest-friend";
 import {GuestDto} from "../../dto/guest-dto";
@@ -29,7 +28,6 @@ export class HeaderComponent implements OnInit {
   guest: Guest = {id: 1};
   friend: Friend = {};
   guestFriend: GuestFriend;
-
   checkGuestFriend = false ;
 
   /*
@@ -92,7 +90,7 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.tokenStorageService.signOut();
     this.isLoggedIn = !this.isLoggedIn;
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
 
@@ -188,7 +186,7 @@ export class HeaderComponent implements OnInit {
         this.guestFriendService.getFriend(idFriend).subscribe(data => {
           this.friend = data;
           this.guestFriend = {
-            guestDto: this.guest,
+            // guestDto: this.guest
             friendDto : this.friend
           }
           this.guestFriendService.addFriend(this.guestFriend).subscribe(()=>{
