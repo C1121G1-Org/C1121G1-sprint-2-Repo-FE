@@ -25,7 +25,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form [formGroup]="createPostForm" (ngSubmit)="create(closeBtn)">
+      <form [formGroup]="createPostForm" (ngSubmit)="create(closeBtn, successButton)">
         <div class="modal-body">
           <div class="post-modal">
             <div class="post-top-modal">
@@ -160,6 +160,31 @@
 
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+
+<button [hidden]="true" #successButton data-toggle="modal" data-target="#successModal"></button>
+<!--success modal-->
+<div id="successModal" class="modal fade">
+  <div class="modal-dialog modal-confirm modal-confirm-success">
+    <div class="modal-content">
+      <div class="modal-header modal-header-success justify-content-center">
+        <div class="icon-box">
+          <i class="material-icons">&#xE876;</i>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        <h4>THÔNG BÁO!</h4>
+        <br>
+        <p>Tạo bài đăng thành công</p>
+        <div class="d-flex justify-content-center">
+          <a [routerLink]="['/listProduct']" type="button" class="btn-modal btn-grad-blue" data-dismiss="modal">Đồng
+            ý</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
-  styleUrls:['./post-create.component.css']
+  styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
 
@@ -64,11 +64,12 @@ export class PostCreateComponent implements OnInit {
   // }
 
   // create(successButton: HTMLButtonElement, errorModalBtn: HTMLButtonElement) {
-  create(closeBtn: HTMLButtonElement) {
+  create(closeBtn: HTMLButtonElement, successButton: HTMLButtonElement) {
     this.createPostForm.controls.feeling.setValue(this.feeling1);
     if (!this.selectedImage) {
       this.postService.createPost(this.createPostForm.value).subscribe(() => {
         this.ngOnInit();
+        successButton.click();
         console.log('success');
         this.hiddenFeeling = true;
         closeBtn.click();
@@ -86,11 +87,16 @@ export class PostCreateComponent implements OnInit {
           fileRef.getDownloadURL().subscribe((url) => {
             this.createPostForm.patchValue({image: url});
             this.postService.createPost(this.createPostForm.value).subscribe(() => {
-                this.createPostForm.reset();
+                this.ngOnInit();
+                successButton.click();
                 console.log('success');
                 this.hiddenFeeling = true;
+                this.imgVip = null;
+                this.hidden = true;
+                this.selectedImage = null;
                 closeBtn.click();
               }, error => {
+                // errorModalBtn.click();
                 console.log(this.createPostForm.value);
               }
             );
