@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Guest} from "./models/guest";
+
 
 @Component({
   selector: 'app-root',
