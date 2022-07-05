@@ -49,7 +49,7 @@
 
               <div class="post-info-modal">
                 <span [hidden]="hiddenFeeling">Đang cảm thấy
-                  <span style="border: none" formControlName="feeling">{{feeling1}}</span></span>
+                  <span>{{feeling1}}</span></span>
               </div>
 
             </div>
@@ -78,11 +78,8 @@
 
             <div class="error_msg"></div>
             <div class="uploaded_file_view" id="uploaded_view">
-              <!--                <div class id="uploaded_view">-->
-              <!--                    <img style="width: 475px; height: 300px" src="https://archive.org/download/no-photo-available/no-photo-available.png">-->
               <img style="width: 100%; height: 100%"
                    src="{{imgVip}}" [hidden]="hidden">
-              <!--            <span class="file_remove" hidden>X</span>-->
             </div>
 
             <div class="post-modal">

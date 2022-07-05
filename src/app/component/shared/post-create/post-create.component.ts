@@ -68,10 +68,7 @@ export class PostCreateComponent implements OnInit {
     this.createPostForm.controls.feeling.setValue(this.feeling1);
     if (!this.selectedImage) {
       this.postService.createPost(this.createPostForm.value).subscribe(() => {
-        // console.log(this.createPostForm.controls.feeling);
         this.ngOnInit();
-        // successButton.click();
-        // .then(r => this.alertService.showMessage("Thêm mới thành công!"));
         console.log('success');
         this.hiddenFeeling = true;
         closeBtn.click();
@@ -90,16 +87,11 @@ export class PostCreateComponent implements OnInit {
             this.createPostForm.patchValue({image: url});
             this.postService.createPost(this.createPostForm.value).subscribe(() => {
                 this.createPostForm.reset();
-
-                // successButton.click();
-                // .then(r => this.alertService.showMessage("Thêm mới thành công!"));
                 console.log('success');
                 this.hiddenFeeling = true;
                 closeBtn.click();
               }, error => {
                 console.log(this.createPostForm.value);
-                // errorModalBtn.click();
-                // this.errorProductName = error.error.errorMap.name;
               }
             );
           });
