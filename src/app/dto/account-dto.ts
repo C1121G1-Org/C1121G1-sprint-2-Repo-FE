@@ -3,6 +3,7 @@ export interface AccountDto {
   userName?: string;
   encryptPassword?: string;
   isEnabled?: boolean;
+  isLogin?: boolean;
   verificationCode?: string;
 }
 

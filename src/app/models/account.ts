@@ -3,5 +3,6 @@ export interface Account {
   userName?: string;
   encryptPassword?: string;
   isEnabled?: boolean;
+  isLogin?: boolean;
   verificationCode?: string;
 }

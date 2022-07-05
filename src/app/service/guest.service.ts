@@ -11,4 +11,7 @@ export class GuestService {
   viewTop100(page: number) :Observable<any>{
     return this.httpClient.get(this.API_URL +'guest/listTop100?page='+page)
   }
+
+
+
 }

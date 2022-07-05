@@ -1,0 +1,122 @@
+ <body id="body" style="margin-top: 7.8rem">
+<section class="slider">
+  <div class="container">
+    <div class="slider-content">
+
+    </div>
+  </div>
+</section>
+
+
+<!--form tao moi-->
+
+<form [formGroup]="editForm" (ngSubmit)="updateGuestAndAccount()">
+  <div class="container">
+    <div class="row" style="justify-content: center;display: flex">
+      <div class="card">
+        <div class="card card-body">
+          <h3 class="text-center font-weight-bold text-uppercase py-4">
+            ĐỔI ẢNH ĐẠI DIỆN
+          </h3>
+          <div class="row" style="justify-content: center;display: flex">
+            <div class="col-md-10 row">
+              <input type="hidden" formControlName="id">
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label class="col-12" ><b>Ảnh đại diện</b><span class="text-danger">(*):</span></label>
+                  <img class="imgProfile" src="https://manofmany.com/wp-content/uploads/2021/03/How-to-Talk-to-Girls-on-Tinder.jpg" alt="Girl in a jacket">
+                  <button class="changeImg" type="button" data-toggle="modal" data-target="#createModal1"><i class="fa-solid fa-pen custom-icon"></i></button>
+                </div>
+                <div class="col-6" >
+
+
+                  <div class="form-group row col-12" style="display: flex;justify-content: flex-end;" >
+                    <label for="price"><b>Cập nhật trạng thái</b> <span class="text-danger">(*):</span> </label>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <a href="#" class="btn btn-success active" role="button" aria-pressed="true">Online</a>
+                      <a href="#" class="btn btn-warning active" role="button" aria-pressed="true">Busy</a>
+                      <a href="#" class="btn btn-secondary active" role="button" aria-pressed="true">Offline</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" col-md-12 text-center mx-auto mt-4">
+                <button style="width: 200px;" type="button" class="btn btn-primary "
+                        data-toggle="modal"
+                        data-target="#createModal"><i class="fa fa-save"></i>Lưu
+                </button>
+
+                <a type="submit" class="btn btn-danger" style="margin-left: 10px; width: 200px"><i class="fa-solid fa-x"></i>
+                  Hủy</a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<script>
+  function format_curency(a) {
+    a.value = a.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+  }
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade " id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn lưu những thay đổi không?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Thay đổi</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade " id="createModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Thay đổi ảnh đại diện</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div calss="row">
+        <div class="row col-12 ">
+          <div class="form-group col-8" >
+            <label for="price"><b>Chọn một ảnh từ máy tính của bạn</b><span class="text-danger">(*):</span></label>
+            <input type="text" id=price formContronlName="price" class="form-control" name="price">
+          </div>
+
+          <div class="form-group col-md-4" style="margin-top: 28px;margin-right: 0px; padding-right: 0; width: 100%;">
+            <label for="files" class="btn btn-success"><i class="fa fa-camera" aria-hidden="true"></i> Tải ảnh lên</label>
+            <input  style="visibility:hidden;" type="file">
+          </div>
+        </div>
+        <div class="form-group row col-12" style="display: flex;justify-content: right;">
+
+          <label for="price"><b>Hoặc tải ảnh lên từ webcam</b> <span class="text-danger">(*):</span> </label>
+          <label for="files" class="btn btn-success"> <i class='fa fa-video-camera'></i> Tải ảnh lên bằng webcam</label>
+          <input id="files" style="visibility:hidden;" type="file">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ </body>
+
+
