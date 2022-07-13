@@ -17,4 +17,8 @@ export interface IMemberDto {
   reportName: string;
 
   numberOfViolations: number;
+
+  postId: number;
+
+  postReportId: number;
 }

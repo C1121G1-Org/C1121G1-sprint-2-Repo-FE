@@ -1,1 +1,34 @@
-<p>report-create works!</p>
+<div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body make-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <section>
+          <!--for demo wrap-->
+          <h1 class="mb-5">Vui lòng chọn hạn mục tố cáo</h1>
+
+          <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+              <tr *ngFor="let report of reportList ">
+                <input type="checkbox" class="text-size"> {{report.name}}
+              </tr>
+              </thead>
+            </table>
+          </div>
+          <div class=" col-md-12 text-center mx-auto mt-4 ">
+            <button type="button" class="btn btn-danger mx-5" >
+              <i class="fa fa-paper-plane"></i>  Tố cáo
+            </button>
+            <button type="button" class="btn btn-primary" >
+              <i class="fa-solid fa-right-from-bracket"></i>HỦY
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

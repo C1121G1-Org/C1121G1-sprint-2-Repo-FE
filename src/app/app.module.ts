@@ -26,12 +26,13 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgxPaginationModule} from 'ngx-pagination';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -68,6 +69,7 @@ import {environment} from '../environments/environment';
     CdkTableModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

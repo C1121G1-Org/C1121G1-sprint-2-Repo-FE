@@ -35,18 +35,18 @@
       <thead class="table-dark">
       <tr>
         <th class="text-center extra-small">STT</th>
-        <th class="text-center">Tên thành viên</th>
-        <th class="text-center">Vip</th>
-        <th class="text-center">Ngày tham gia</th>
-        <th class="text-center">Số xu</th>
-        <th class="text-center">Số lần vi phạm</th>
+        <th class="text-center extra-large">Tên thành viên</th>
+        <th class="text-center small">Vip</th>
+        <th class="text-center small">Ngày tham gia</th>
+        <th class="text-center small">Số xu</th>
+        <th class="text-center medium">Số lần vi phạm</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let item of members; index as i;">
         <th class="text-center">{{i + 1}}</th>
         <td><a [routerLink]="['/profile-personal', item.guestId]">{{item.guestName}}</a></td>
-        <td class="text-center" *ngIf="item.amountRecharge >= 300; else elseStatus"
+        <td class="text-center" *ngIf="item.amountRecharge >= 5000; else elseStatus"
             ><i class="fa-solid fa-circle-check green"></i></td>
         <!--                                         true = 1           false = 0           -->
         <ng-template #elseStatus>
@@ -57,11 +57,7 @@
         <td class="text-center">{{item.joinDate | date: 'dd/MM/yyy'}}</td>
         <td class="text-center">{{item.walletCoin | number}}</td>
         <td class="text-center">{{item.numberOfViolations}}</td>
-
       </tr>
-      <!--            <tr>-->
-      <!--              <td class="text-center" colspan="10" style="text-align: center; font-size: 20px">Không tìm thấy nội dung</td>-->
-      <!--            </tr>-->
       <tr [class.display]="checkNull">
         <td class="text-center" colspan="10">{{indexPagination * 10 + 1}}
           - {{(totalPagination > indexPagination) ? ((indexPagination + 1) * 10) : totalMemberRecord}}

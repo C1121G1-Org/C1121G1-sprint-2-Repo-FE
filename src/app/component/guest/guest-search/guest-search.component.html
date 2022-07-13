@@ -1,1 +1,102 @@
-<p>guest-search works!</p>
+<body style="margin-top: 5rem">
+<div class="d-flex justify-content-center">
+  <div class="card mt-50">
+    <div class="card-body">
+      <input #names [ngModel]="name" (change)="searchName(names.value)" style="width: 250px ; margin-right: 20px"
+             class="header-search search-input " placeholder="Tìm kiếm tình yêu"
+             type="text">
+      <button (click)="chose()" class="btn btn-danger">Tìm kiếm nâng cao</button>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" [hidden]="hidden" style="margin-top: 1rem">
+  <div style="margin: auto">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"
+           style="display: flex ;justify-content: space-between">
+        <div class="form-group ">
+          <label>Tìm Kiếm Theo Tên </label>
+          <input class="form-control mr-sm-2" #keyOne type="search" placeholder="Tìm Kiếm Theo Tên"
+                 aria-label="Search">
+        </div>
+        <div class="form-group ">
+          <label>Giới Tính</label>
+          <select class="form-control" style="width:100px" #keyTwo>
+            <option value="0">Nữ</option>
+            <option value="1">Nam</option>
+          </select>
+        </div>
+        <div class="form-group ">
+          <label>Thành Phố</label>
+          <input class="form-control mr-sm-2" #keyThree type="search" placeholder="Tìm Kiếm Thành Phố"
+                 aria-label="Search">
+        </div>
+        <div class="form-group ">
+          <label>Năm Sinh</label>
+          <input class="form-control" style="width: 100px" type="text" placeholder="Năm Sinh" #keyFour>
+        </div>
+        <div class="form-group ">
+          <label>Nghề Nghiệp</label>
+          <input class="form-control" style="width: 150px ; " type="text" placeholder="Nghề Nghiệp" #keyFive>
+        </div>
+        <div class="form-group">
+          <label>Sở Thích</label>
+          <select class="form-control" style="width:150px" #keySix>
+            <option value="1">Nghe nhạc</option>
+            <option value="2">Xem phim</option>
+            <option value="3">Du lịch</option>
+            <option value="4">Ăn uống</option>
+            <option value="5">Nuôi pet</option>
+            <option value="6">Đọc sách</option>
+            <option value="7">Đá bóng</option>
+            <option value="8">Yoga</option>
+            <option value="9">Hội họa</option>
+            <option value="10">Bơi lội</option>
+          </select>
+        </div>
+        <div class="form-group mt-4">
+          <button class="btn btn-danger my-2 my-sm-0" type="submit"
+                  (click)="search(keyOne.value,keyTwo.value,keyThree.value,keyFour.value,keyFive.value,keySix.value)">
+            Tìm Kiếm
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="container-fluid" style="display: flex ;justify-content: center ; align-content: center ; margin-top: 10px ; margin-left: 4rem">
+    <div class="container-fluid" style="margin: auto">
+      <div class="row d-inline-flex">
+        <div *ngFor="let g of guests | paginate : {itemsPerPage : 4 , currentPage : a}">
+          <div class="card  shadow-lg p-3 mb-5 bg-white " style="width: 18rem; margin-right: 2rem">
+            <img src="{{g.image}}" width="130" height="200" class="card-img-top">
+            <div class="card-body">
+              <a routerLink="/profile-friend/{{g.id}}"><h5 class="card-title">{{g.name}}</h5></a>
+              <p class="desc" data-toggle="tooltip" data-placement="top" title="{{g.address}}">{{g.address}}</p>
+              <small class="card-text">
+                {{g.dateOfBirth}}
+              </small>
+              <br>
+              <small class="card-text">
+                {{g.career}}
+              </small>
+              <p></p>
+              <button routerLink="/profile-friend/{{g.id}}" class="btn btn-danger">Tym <i class="fa-brands fa-gratipay"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex ;justify-content: center">
+    <pagination-controls  class="my-pagination" (pageChange)="a=$event" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel">
+
+    </pagination-controls>
+  </div>
+
+
+</div>
+
+</body>
