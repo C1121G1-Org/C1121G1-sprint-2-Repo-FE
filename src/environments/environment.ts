@@ -4,18 +4,16 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: 'AIzaSyBDmAmPQ4oZ2KlXtp1qhk8HDndGzHTAyLo',
-    authDomain: 'sprint1-c2e64.firebaseapp.com',
-    databaseURL: 'https://sprint1-c2e64-default-rtdb.firebaseio.com',
-    projectId: 'sprint1-c2e64',
-    storageBucket: 'sprint1-c2e64.appspot.com',
-    messagingSenderId: '715730046220',
-    appId: '1:715730046220:web:e4e0e868fca6888dc2cd29',
-    measurementId: 'G-2DDMRCPRQW'
+  firebaseConfig: {
+    apiKey: "AIzaSyA0tQSSPs4tVRKtIbd5H_JpTeQjrqHF_lA",
+    authDomain: "upload-image-59d03.firebaseapp.com",
+    projectId: "upload-image-59d03",
+    storageBucket: "upload-image-59d03.appspot.com",
+    messagingSenderId: "166702286549",
+    appId: "1:166702286549:web:f3bfc98eaaaf47edde045c",
+    measurementId: "G-S4PGRQPMBE"
   },
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

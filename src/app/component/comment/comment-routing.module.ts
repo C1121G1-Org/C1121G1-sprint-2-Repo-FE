@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {CommentListComponent} from './comment-list/comment-list.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [{path: 'comment-list', component: CommentListComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,1 +1,73 @@
-<p>gift works!</p>
+
+<div
+  class="modal fade"
+  id="giftModal"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content tam">
+      <div class="modal-header">
+        <div style="margin-left: 50px">
+          <a (click)="chooseCategory(category.id)" class="mx-2" *ngFor="let category of categoryList"
+             [class.height-light]="isSelected(category)"
+          >
+            <button class="btn btn-black">{{category.name}}</button>
+          </a>
+        </div>
+      </div>
+      <div class="modal-body modals">
+        <div class=" mt-1 row row-cols-2 row-cols-lg-4 g-2 g-lg-4 text-center  ">
+          <div style="cursor: pointer" (click)="chooseGift(i,gift)" class="card  card-content" *ngFor="let gift of giftList ; index as i"
+               [ngStyle]="{'background-color': activeProjectIndex === i && flagClick ? '#84c0ec' : ''}"
+          >
+            <i data-toggle="tooltip" data-lacement="top"
+               title="Hoa Hồng">
+              <img src="{{gift.image}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <span class="desc" style="font-size: 12px">
+                    <i data-toggle="tooltip" data-placement="top"
+                       title=" {{gift.name}}">
+                               {{gift.name}}</i>
+                 </span>
+                <div class="card-item-1">
+                  <img src="https://vinagems.vn/images/upload/images/kim-cuong-.jpg" alt="">
+                  <span>{{gift.amountCoin}}</span>
+                </div>
+              </div>
+            </i>
+          </div>
+        </div>
+        <div style="display: flex;  justify-content: end">
+          <button #element1 type="button" class="btn btn-warning mx-2" data-dismiss="modal">HỦY</button>
+          <button (click)="saveGiveGift(element1)" type="button" class="btn btn-outline-success" data-toggle="modal"
+                  data-target="#success-modal">TẶNG QUÀ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal thành công-->
+
+<!--<div class="modal fade" id="success-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"-->
+<!--     aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-confirm modal-confirm-danger">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header modal-header-danger justify-content-center">-->
+<!--        <div class="icon-box">-->
+<!--          <i class="material-icons">&#xE5CD;</i>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modal-body text-center">-->
+<!--        <h4>Bạn có chắc chắn tặng quà cho:</h4>-->
+<!--        <p>Không có sản phẩm nào được chọn.</p>-->
+<!--        <button class="btn-modal btn btn-danger" data-dismiss="modal">Thoát</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+

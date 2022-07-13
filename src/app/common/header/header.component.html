@@ -1,4 +1,3 @@
-
 <!--
 Fixed Navigation
 ==================================== -->
@@ -9,7 +8,8 @@ Fixed Navigation
       <!-- logo -->
       <a class="navbar-brand logo" href="">
         <img style="background-color: #fd267a;
-                background-image: linear-gradient(45deg,#fd267a,#ff6036); height: 5rem; width: 7.5rem; border-radius: 1rem"  class="logo-default"
+                background-image: linear-gradient(45deg,#fd267a,#ff6036); height: 5rem; width: 7.5rem; border-radius: 1rem"
+             class="logo-default"
              src="assets\images\Dating.png" alt="logo"/>
         <img style="height: 5rem" width="120rem" class="logo-white" src="assets\images\Dating.png" alt="logo"/>
       </a>
@@ -19,47 +19,165 @@ Fixed Navigation
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <form class="d-flex">
-        <input style="border-radius: 20px" class="form-control me-2" type="search" placeholder="Tìm kiếm tình yêu" aria-label="Search">
-      </form>
-
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="navbar-nav ml-auto text-center">
-          <li class="nav-item dropdown active">
+          <li class="nav-item dropdown active" [hidden]="!isLoggedIn">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
-              Bạn bè
+              Kết bạn
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="index.html">Lời mời kết bạn</a>
-              <a class="dropdown-item" href="onepage-slider.html">Gợi ý kết bạn</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                 style="background-color: rgba(255,255,255,0);">
+              <!--              <a class="dropdown-item" href="index.html">Lời mời kết bạn</a>-->
+              <!--              <a class="dropdown-item" href="onepage-slider.html">Gợi ý kết bạn</a>-->
+              <div class="friend-request" style="background-color: white;">
+                <div class="friend-request-card">
+                  <div class="friend-request-title">
+                    <div class="friend-request-title-back">
+                      <a> <i class="fa-solid fa-arrow-left-long"></i></a>
+                    </div>
+                    <h3>Lời mời kết bạn</h3>
+                  </div>
+                  <div class="friend-request-message">
+                    <!--                    <h6>Chiến Lê đã được thêm vào danh sách bạn bè</h6>-->
+                    <h5 *ngIf="flagRequest">Hiện tại không có lời mời kết bạn nào.</h5>
+                  </div>
+                  <div class="friend-request-list">
+                    <div class="friend-request-item" *ngFor="let friendRequest of friendRequests">
+                      <div class="friend-request-item-left">
+                        <a href="#">
+                          <img src="{{friendRequest.friend.image}}" alt="">
+                        </a>
+                      </div>
+                      <div class="friend-request-item-right">
+                        <div class="friend-request-item-name">
+                          <a href="#">{{friendRequest.friend.name}}</a>
+                        </div>
+                        <div class="friend-request-item-mutual-friends">
+                          {{friendRequest.friend.dateOfBirth | date: "dd/MM/yyyy"}}
+                        </div>
+                        <div class="friend-request-item-button">
+                          <div class="friend-request-item-button-confirm">
+                            <button class="friend-request-item-button-yes">
+                              <a (click)="acceptFriendRequest(friendRequest.id)">Chấp nhận</a></button>
+                            <button class="friend-request-item-button-no">
+                              <a (click)="refuseFriendRequest(friendRequest.id)">Từ chối</a></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">Quản lý thành viên</a>
+          <li class="nav-item dropdown active" [hidden]="!isLoggedIn">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              Gợi ý
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                 style="background-color: rgba(255,255,255,0);">
+              <!--              <a class="dropdown-item" href="index.html">Lời mời kết bạn</a>-->
+              <!--              <a class="dropdown-item" href="onepage-slider.html">Gợi ý kết bạn</a>-->
+              <div class="friend-request" style="background-color: rgb(255,255,255);">
+                <div class="friend-request-card">
+                  <div class="friend-request-title">
+                    <div class="friend-request-title-back">
+                      <a> <i class="fa-solid fa-arrow-left-long"></i></a>
+                    </div>
+                    <h3>Gợi ý kết bạn</h3>
+                  </div>
+                  <div class="friend-request-list">
+                    <div class="friend-request-list-title">
+                      <h4 *ngIf="flagSuggestion == false">Những người bạn có thể biết</h4>
+                    </div>
+                    <div class="friend-request-message">
+                      <!--                      <h6>Đã gửi lời mời kết bạn đến Chiến Lê</h6>-->
+                      <h5 *ngIf="flagSuggestion">Hiện tại không có gợi ý kết bạn nào.</h5>
+                    </div>
+                    <div class="friend-request-item" *ngFor="let friendSuggestion of friendSuggestions">
+                      <div class="friend-request-item-left">
+                        <a href="#">
+                          <img src="{{friendSuggestion.friend.image}}" alt="">
+                        </a>
+                      </div>
+                      <div class="friend-request-item-right">
+                        <div class="friend-request-item-name">
+                          <a href="#">{{friendSuggestion.friend.name}}</a>
+                        </div>
+                        <div class="friend-request-item-mutual-friends">
+                          {{friendSuggestion.friend.dateOfBirth | date: "dd/MM/yyyy"}}
+                        </div>
+                        <div class="friend-request-item-button">
+                          <div class="friend-request-item-button-confirm">
+                            <button class="friend-request-item-button-yes">
+                              <a (click)="addFriend(friendSuggestion.guest.id,friendSuggestion.friend.id)">
+                                Thêm bạn bè</a></button>
+                            <button class="friend-request-item-button-no">
+                              <a (click)="removeSuggestion(friendSuggestion.id)">Xóa, gỡ bỏ</a></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item ">
+<!--          <li class="nav-item ">-->
+<!--            <a class="nav-link" >Quản lý thành viên</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item ">-->
+<!--            <a class="nav-link" >Top 100</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item ">-->
+<!--            <a class="nav-link" routerLink="/post-report">Nhận phản hồi</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item ">-->
+<!--            <a class="nav-link" routerLink="/searchList">Tìm kiếm bạn bè</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item ">-->
+<!--            <a class="nav-link" routerLink="/friend/list">Bạn bè</a>-->
+<!--          </li>-->
+
+          <li [hidden]="!isLoggedIn" class="nav-item ">
+            <a class="nav-link" routerLink="/guest-member">Quản lý thành viên</a>
+          </li>
+          <li [hidden]="!isLoggedIn" class="nav-item ">
             <a class="nav-link" href="">Top 100</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="">Nhận phản hồi</a>
+          <li [hidden]="!isLoggedIn" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1" class="nav-item ">
+            <a class="nav-link" routerLink="/post-report">Nhận phản hồi</a>
           </li>
-          <!--                    <li class="nav-item dropdown">-->
-          <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
-          <!--                           data-toggle="dropdown"-->
-          <!--                           aria-haspopup="true" aria-expanded="false">-->
-          <!--                            Pages-->
-          <!--                        </a>-->
-          <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-          <!--                            <a class="dropdown-item" href="404.html">404 Page</a>-->
-          <!--                            <a class="dropdown-item" href="blog.html">Blog Page</a>-->
-          <!--                            <a class="dropdown-item" href="single-post.html">Blog Single Page</a>-->
-          <!--                        </div>-->
-          <!--                    </li>-->
+          <li [hidden]="!isLoggedIn" class="nav-item ">
+            <a class="nav-link" routerLink="/searchList">Tìm kiếm bạn bè</a>
+          </li>
+
+          <button [hidden]="isLoggedIn" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8"
+                  class="btn btn-main"
+                  [routerLink]="['/login']">Đăng nhập
+          </button>
+
+          <li [hidden]="!isLoggedIn" class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              <img src="{{imageLink}}"
+                   alt="" style="border-radius: 50%;width: 40px; height: 40px; object-fit: cover">
+              <span class="header-text">
+                {{username}} <i class="fa-solid fa-angle-down"></i>
+              </span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['/personal-information']">Thông tin cá nhân</a>
+              <a class="dropdown-item" [routerLink]="['/change-personal-password']">Bảo mật</a>
+              <a class="dropdown-item" (click)="logOut()" style="color: white;">Đăng Xuất </a>
+            </div>
+          </li>
         </ul>
-        <button data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8" class="btn btn-main"
-                href="">Đăng nhập</button>
       </div>
     </nav>
     <!-- /main nav -->

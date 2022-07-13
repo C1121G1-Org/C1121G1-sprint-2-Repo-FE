@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GuestModule} from './component/guest/guest.module';
@@ -16,9 +17,24 @@ import {GuestFriendModule} from './component/guest-friend/guest-friend.module';
 import {HomepageModule} from './component/homepage/homepage.module';
 import {PostModule} from './component/post/post.module';
 import {ReportModule} from './component/report/report.module';
+
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CdkTableModule} from '@angular/cdk/table';
+import {MatDialogModule} from '@angular/material/dialog';
+
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {HttpClientModule} from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
 
 @NgModule({
   declarations: [
@@ -42,8 +58,19 @@ import {HttpClientModule} from '@angular/common/http';
     SecurityModule,
     SharedModule,
     WalletModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    DragDropModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    CdkTableModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

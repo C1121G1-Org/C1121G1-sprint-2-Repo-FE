@@ -1,1 +1,44 @@
-<p>guest-warning works!</p>
+<div id="layout" class="container-fluid">
+  <div class="table_header_2">
+    <h1>Cảnh Cáo Thành Viên</h1>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-12 d-flex justify-content-between">
+      <div class="form-inline">
+        <div class="input_header">
+          <span>Tên Thành Viên:</span>
+          <label class="mx-1">{{guestName}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+      <tr>
+        <th class="text-center medium">Ngày</th>
+        <th class="text-center large">Vi phạm</th>
+        <th class="text-center extra-large">Thành viên báo cáo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let postReport of postReportList">
+        <td class="text-center">{{postReport.dateReport}}</td>
+        <td class="text-center">{{postReport.reportName}}</td>
+        <td class="text-center">{{postReport.reportedPeopleName}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: center; margin-top: 10px;">
+      <button type="button" class="btn btn-primary">Cảnh Cáo</button>
+      <button type="button" class="btn btn-primary mx-4">Khóa nick 1 tuần</button>
+      <button type="button" class="btn btn-primary">Khóa 1 tháng</button>
+      <button type="button" class="btn btn-primary mx-4">Khóa vĩnh viễn</button>
+    </div>
+    <!--=======-->
+  </div>
+</div>
+
+
